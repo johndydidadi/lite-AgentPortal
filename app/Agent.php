@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Model;
 use App\Common\HRISModel;
 
 class Agent extends HRISModel

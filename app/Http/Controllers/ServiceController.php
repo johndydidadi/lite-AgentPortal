@@ -14,8 +14,24 @@ class ServiceController extends CRUDController
 
         $this->resourceModel = $model;
         $this->validationRules = [
-            'service' => 'required',
-            'price' => 'required'
+        	'store' => [
+	            'service' => 'required',
+	            'price' => 'required'
+        	],
+        	'update' => [
+        		'service' => 'required',
+	            'price' => 'required'
+        	]
         ];
+    }
+
+    public function beforeStore()
+    {
+         $this->validatedInput['price'] = str_replace(',', '', $this->validatedInput['price']);
+    }
+
+    public function beforeUpdate()
+    {
+        $this->beforeStore();
     }
 }

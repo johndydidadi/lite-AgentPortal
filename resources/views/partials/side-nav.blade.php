@@ -6,16 +6,36 @@
                     Dashboard
                 </a>
             </li>
+        </ul>
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <span>Data Entry</span>
+            <a class="d-flex align-items-center text-muted" href="#">
+                <span class="fas fa-file-alt "></span>
+            </a>
+        </h6>
+        <ul class="nav flex-column mb-2">
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('agents.index') }}">
                     Agents
                 </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('clients.index') }}">
                     Clients
-                </a>s
+                </a>
             </li>
+        </ul>
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <span>Maintain</span>
+            <a class="d-flex align-items-center text-muted" href="#">
+                <span class="fas fa-cog"></span>
+            </a>
+        </h6>
+        <ul class="nav flex-column mb-2">
+            <a class="nav-link" href="{{ route('services.index') }}">
+                Services
+            </a>
+            <a class="nav-link" href="">
+                Users
+            </a>
         </ul>
     </div>
 </nav>

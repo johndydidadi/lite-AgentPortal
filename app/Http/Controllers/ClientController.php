@@ -13,12 +13,22 @@ class ClientController extends CRUDController
 
         $this->resourceModel = $model;
         $this->validationRules = [
-            'company' => 'required',
-            'representative' => 'required|alpha',
-            'contact_number' => 'required',
-            'address' => 'required',
-            'nature_of_business' => 'required',
-//            'service' => 'required'
+            'store' => [
+                'company' => 'required',
+                'representative' => 'required|alpha',
+                'contact_number' => 'required',
+                'address' => 'required',
+                'nature_of_business' => 'required',
+                //'service' => 'required'
+            ],
+            'update' => [
+                'company' => 'required',
+                'representative' => 'required|alpha',
+                'contact_number' => 'required',
+                'address' => 'required',
+                'nature_of_business' => 'required',
+                //'service' => 'required'
+            ]    
         ];
     }
 }

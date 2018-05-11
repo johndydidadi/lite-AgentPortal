@@ -22,6 +22,7 @@ class CreateClientsTable extends Migration
             $table->string('nature_of_business');
 //            $table->enum('services' , ['']);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

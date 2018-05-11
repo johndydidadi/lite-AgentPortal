@@ -3,8 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Common\HRISModel;
 
-class Service extends Model
+class Service extends HRISModel
 {
     protected $fillable = [
         'service',

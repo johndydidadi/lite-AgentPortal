@@ -11,7 +11,18 @@
 |
 */
 
+Route::group(['middleware' => 'guest'], function () {
+	Route::get('/', 'Auth\CustomLoginController@showLoginPage')->name('get:login');
+	Route::get('login', 'Auth\CustomLoginController@showLoginPage')->name('get:login');
+	Route::post('/', 'Auth\CustomLoginController@login')->name('post:login');
+});
 
-Route::get('/', function(){
-   echo "Laravel";
+Route::post('logout', 'Auth\CustomLogoutController@logout')->name('post:logout');
+
+Route::group(['middleware' => 'auth'], function() {
+	Route::get('/home', 'DashboardController@index')->name('get:dashboard:index');
+
+	Route::resource('agents', 'AgentController');
+	Route::resource('clients', 'ClientController');
+	Route::resource('services', 'ServiceController');
 });

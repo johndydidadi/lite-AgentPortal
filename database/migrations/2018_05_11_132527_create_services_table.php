@@ -18,6 +18,7 @@ class CreateServicesTable extends Migration
             $table->string('service');
             $table->decimal('price', 13,2);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
