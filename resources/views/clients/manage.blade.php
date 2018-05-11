@@ -14,14 +14,12 @@
                 @else
                     {!! Form::open(['url' => Myhelper::resource('store'), 'method' => 'post']) !!}
                 @endif
-                {!! Form::inputGroup('text', 'First Name', 'firstname') !!}
-                {!! Form::inputGroup('text', 'Middle Name', 'middletname') !!}
-                {!! Form::inputGroup('text', 'Last Name', 'lastname') !!}
-                {!! Form::selectGroup('Gender', 'gender', ['' => 'Select type', 'Male' => 'Male', 'Female' => 'Female']) !!}
-                {!! Form::inputGroup('date', 'Birth Date', 'birth_date') !!}
+                {!! Form::inputGroup('text', 'Company', 'company') !!}
+                {!! Form::inputGroup('text', 'Representative', 'representative') !!}
                 {!! Form::inputGroup('text', 'Contact Number', 'contact_number') !!}
-                {!! Form::inputGroup('email', 'Email', 'email') !!}
-                {!! Form::inputGroup('text', 'Quota', 'quota', $resourceData->quota ?? 0.00 , ['class'=> 'price']) !!}
+                {!! Form::inputGroup('text', 'Address', 'address') !!}
+                {!! Form::inputGroup('text', 'Nature Of Business', 'nature_of_business') !!}
+                {{--SERVICES--}}
                 <hr>
                 <button class="btn btn-sm {{ $resourceData->id ? 'btn-outline-info' : 'btn-outline-success' }}">
                     {{ $resourceData->id ? 'Update' : 'Create' }}
