@@ -18,7 +18,7 @@
 			{!! Form::open(['url' => route('post:logout'), 'method' => 'POST', 'class' => 'logout', 'id' => 'logout-form']) !!}
 			{!! Form::close() !!}
 			<li class="nav-item text-nowrap">
-				<span class="pr-3 text-white" href="#">{{ Auth::user()->fullname }}</span>
+				<span class="pr-3 text-white" href="#">{{ Auth::user()->firstname }}</span>
 				<a class="btn btn-outline-light btn-sm  logout" href="#">Sign out</a>
 			</li>
 		</ul>
@@ -30,9 +30,9 @@
 
 			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
 				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-					@yield('page-header')
+					@yield('header')
 				</div>
-				@yield('page-content')
+				@yield('content')
 			</main>
 		</div>
 	</div>
