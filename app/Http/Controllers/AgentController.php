@@ -51,12 +51,11 @@ class AgentController extends CRUDController
     public function afterStore($model)
     {
         User::create([
-            'firstname' => ' ',
-            'middlename' => ' ',
-            'lastname' => ' ',
             'email' => $this->validatedInput['email'],
+            'role' => 'Agent',
             'username' => $this->validatedInput['email'],
-            'password' => '1234'
+            'password' => '1234',
+
         ]);
     }
 }

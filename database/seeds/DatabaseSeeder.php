@@ -13,12 +13,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::create([
-        	'firstname' => 'John Dy',
-            'middlename' => 'o',
-            'lastname' => 'Punay',
             'email' => 'johndy_punay@gmail.com',
             'username' => 'admin',
-            'password' => 'admin'
+            'password' => 'admin',
+            'role' => 'Admin'
         ]);
     }
 }
