@@ -9,6 +9,11 @@ class Service extends HRISModel
 {
     protected $fillable = [
         'service',
-        'price'
+        'payment_type',
+        'otp_price',
+        'annual_price',
+        'semi_quarterly_price',
+        'quarterly_price',
+        'monthly_price'
     ];
 }

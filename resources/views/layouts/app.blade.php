@@ -64,7 +64,31 @@
 				autoclose: true,
 				orientation: "bottom auto"
 			});
+
+			if($('.payment_type').val() == 'subscription'){
+				$('.subscription').attr('disabled', false);
+				$('#OTP').attr('disabled', true);
+			}
+			else if($('.payment_type').val() == 'one_time_payment'){
+				$('#OTP').attr('disabled', false);
+				$('.subscription').attr('disabled', true);
+			}
 		});
+
+		$('.payment_type').change(function(){
+			if($(this).val() == 'subscription'){
+				$('.subscription').attr('disabled', false);
+				$('#OTP').attr('disabled', true);
+				$('#OTP').val(0);
+
+			}
+			else if($(this).val() == 'one_time_payment'){
+				$('#OTP').attr('disabled', false);
+				$('.subscription').attr('disabled', true);
+				$('.subscription').val(0);
+			}
+		});
+
 	</script>
 	</body>
 </html>
