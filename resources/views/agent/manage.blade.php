@@ -15,8 +15,9 @@
                     {!! Form::open(['url' => Myhelper::resource('store'), 'method' => 'post']) !!}
                 @endif
                 {!! Form::inputGroup('text', 'First Name', 'firstname') !!}
-                {!! Form::inputGroup('text', 'Middle Name', 'middletname') !!}
+                {!! Form::inputGroup('text', 'Middle Name', 'middlename') !!}
                 {!! Form::inputGroup('text', 'Last Name', 'lastname') !!}
+                {!! Form::inputGroup('text', 'Address', 'address') !!}
                 {!! Form::selectGroup('Gender', 'gender', ['' => 'Select type', 'Male' => 'Male', 'Female' => 'Female']) !!}
                 {!! Form::inputGroup('date', 'Birth Date', 'birth_date') !!}
                 {!! Form::inputGroup('text', 'Contact Number', 'contact_number') !!}

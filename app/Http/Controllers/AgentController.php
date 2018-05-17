@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Agent;
+use App\User;
 use Illuminate\Http\Request;
 use App\Common\CRUDController;
-use App\Agent;
 
 class AgentController extends CRUDController
 {
@@ -35,5 +36,27 @@ class AgentController extends CRUDController
 
             ]
         ];
+    }
+
+    public function beforeStore()
+    {
+        $this->validatedInput['quota'] = str_replace(',' , '', $this->validatedInput['quota']);
+    }
+
+    public function beforeUpdate()
+    {
+        $this->beforeStore();
+    }
+
+    public function afterStore($model)
+    {
+        User::create([
+            'firstname' => ' ',
+            'middlename' => ' ',
+            'lastname' => ' ',
+            'email' => $this->validatedInput['email'],
+            'username' => $this->validatedInput['email'],
+            'password' => '1234'
+        ]);
     }
 }

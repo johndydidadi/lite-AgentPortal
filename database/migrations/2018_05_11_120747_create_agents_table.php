@@ -18,6 +18,7 @@ class CreateAgentsTable extends Migration
             $table->string('firstname');
             $table->string('middlename')->nullable();
             $table->string('lastname');
+            //change to $table->string('name');
             $table->string('address');
             $table->enum('gender' , ['Male', 'Female']);
             $table->date('birth_date');
