@@ -35,7 +35,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        {!! Form::inputGroup('text', 'Semi-Quarterly Price', 'semi_quarterly_price', $resourceData->quarterly_price ?? 0.00, ['class' => 'price subscription']) !!}
+                        {!! Form::inputGroup('text', 'Semi-Annual Price', 'semi_annual_price', $resourceData->semi_annual_price ?? 0.00, ['class' => 'price subscription']) !!}
                     </div>
                 </div>
                 <div class="row">

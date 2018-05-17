@@ -42,10 +42,10 @@
                 <thead>
                     <tr>
                         <th scope="col">Service</th>
-                        <th scope="col">Annual</th>
-                        <th scope="col">Semi Quarterly</th>
-                        <th scope="col">Quarterly</th>
                         <th scope="col">Monthly</th>
+                        <th scope="col">Quarterly</th>
+                        <th scope="col">Semi Annual</th>
+                        <th scope="col">Annual</th>                   
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -54,10 +54,10 @@
                         @if($row->payment_type == 'subscription')    
                         <tr>
                             <td scope="row">{{ $row->service }}</td>
-                            <td scope="row" class="price">{{ $row->annual_price }}</td>
-                            <td scope="row" class="price">{{ $row->semi_quarterly_price }}</td>
-                            <td scope="row" class="price">{{ $row->quarterly_price }}</td>
                             <td scope="row" class="price">{{ $row->monthly_price }}</td>
+                            <td scope="row" class="price">{{ $row->quarterly_price }}</td>
+                            <td scope="row" class="price">{{ $row->semi_annual_price }}</td>
+                            <td scope="row" class="price">{{ $row->annual_price }}</td>
                             <td>{!! Form::indexActions($row->id) !!}</td>
                         </tr>
                         @endif      

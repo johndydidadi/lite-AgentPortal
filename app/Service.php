@@ -12,7 +12,7 @@ class Service extends HRISModel
         'payment_type',
         'otp_price',
         'annual_price',
-        'semi_quarterly_price',
+        'semi_annual_price',
         'quarterly_price',
         'monthly_price'
     ];
