@@ -18,7 +18,7 @@
 			{!! Form::open(['url' => route('post:logout'), 'method' => 'POST', 'class' => 'logout', 'id' => 'logout-form']) !!}
 			{!! Form::close() !!}
 			<li class="nav-item text-nowrap">
-				<span class="pr-3 text-white" href="#">{{ Auth::user()->firstname }}</span>
+				<span class="pr-3 text-white" href="#">{{ Auth::user()->fullname }}</span>
 				<a class="btn btn-outline-light btn-sm  logout" href="#">Sign out</a>
 			</li>
 		</ul>
@@ -73,19 +73,24 @@
 				$('#OTP').attr('disabled', false);
 				$('.subscription').attr('disabled', true);
 			}
+			else{
+				$('#OTP').attr('disabled', true);
+				$('.subscription').attr('disabled', true);
+			}
+
 		});
 
 		$('.payment_type').change(function(){
 			if($(this).val() == 'subscription'){
 				$('.subscription').attr('disabled', false);
 				$('#OTP').attr('disabled', true);
-				$('#OTP').val(0);
+				$('#OTP').val('0.00');
 
 			}
 			else if($(this).val() == 'one_time_payment'){
 				$('#OTP').attr('disabled', false);
 				$('.subscription').attr('disabled', true);
-				$('.subscription').val(0);
+				$('.subscription').val('0.00');
 			}
 		});
 

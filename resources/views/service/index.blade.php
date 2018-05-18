@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-    <div class="card">
+    <div class="box-shadow">
     <h5>One Time Payment</h5> 
         <div class="my-3 bg-white rounded box-shadow">
             <table class="table table-sm">
@@ -35,7 +35,7 @@
 
     <hr>
 
-    <div class="card">
+    <div class="box-shadow">
     <h5>Subscriptions</h5> 
         <div class="my-3 bg-white rounded box-shadow">
             <table class="table table-sm">

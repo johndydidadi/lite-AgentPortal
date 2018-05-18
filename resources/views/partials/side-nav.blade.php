@@ -36,9 +36,6 @@
                 <a class="nav-link" href="{{ route('services.index') }}">
                     Services
                 </a>
-                <a class="nav-link" href="">
-                    Users
-                </a>
             </ul>
         @endif
     </div>

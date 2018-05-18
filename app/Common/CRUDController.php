@@ -91,7 +91,7 @@ class CRUDController extends Controller
             $className = substr($fullNamespace, $pos + strlen($lastNamespace));
         } else {
             $className = $pos;
-        }
+        }  
 
         $stripped = str_replace($strip, '', $className);
         $segments = array_map(function ($item) {

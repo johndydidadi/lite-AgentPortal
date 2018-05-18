@@ -24,7 +24,7 @@ class CustomLoginController extends Controller
 		]);
 
 		if(!Auth::attempt($data)) {
-			return redirect()->route('get:login')->withInputs()->withErrors(['password' => 'Incorrect Password']);
+			return redirect()->route('get:login')->withErrors(['password' => 'Incorrect Password']);
 		} else {
 			return redirect()->route('get:dashboard:index');
 		};

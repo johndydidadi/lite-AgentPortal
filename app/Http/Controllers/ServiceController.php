@@ -58,6 +58,32 @@ class ServiceController extends CRUDController
 
     public function beforeUpdate()
     {
+        /*if(request()->payment_type == 'subscription')
+        {
+            if($this->validatedInput['annual_price'] != 0 || $this->validatedInput['semi_annual_price'] != 0 || $this->validatedInput['quarterly_price'] != 0 || $this->validatedInput['monthly_price'] != 0)
+            {
+                $this->validatedInput['otp_price'] = 0;
+                $this->validatedInput['annual_price'] = str_replace(',', '', $this->validatedInput['annual_price']);
+                $this->validatedInput['semi_annual_price'] = str_replace(',', '', $this->validatedInput['semi_annual_price']);
+                $this->validatedInput['quarterly_price'] = str_replace(',', '', $this->validatedInput['quarterly_price']);
+                $this->validatedInput['monthly_price'] = str_replace(',', '', $this->validatedInput['monthly_price']);
+            }
+        }
+        else if(request()->payment_type == 'one_time_payment')
+        {
+            if($this->validatedInput['otp_price'] != 0)
+            {
+                $this->validatedInput['otp_price'] = str_replace(',', '', $this->validatedInput['otp_price']);
+                $this->validatedInput['annual_price'] = 0;
+                $this->validatedInput['semi_annual_price'] = 0;
+                $this->validatedInput['quarterly_price'] = 0;
+                $this->validatedInput['monthly_price'] = 0;
+            }
+            else
+            {
+                return back();
+            }
+        }*/
         $this->beforeStore();
     }
 }

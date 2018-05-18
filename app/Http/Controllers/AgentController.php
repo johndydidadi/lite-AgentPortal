@@ -6,6 +6,7 @@ use App\Agent;
 use App\User;
 use Illuminate\Http\Request;
 use App\Common\CRUDController;
+use Illuminate\Validation\Rule;
 
 class AgentController extends CRUDController
 {
@@ -16,22 +17,24 @@ class AgentController extends CRUDController
         $this->validationRules = [
             'store' => [
                 'firstname' => 'required|alpha',
+                'middlename' => 'alpha|nullable',
                 'lastname' => 'required|alpha',
                 'address' => 'required',
                 'gender' => 'required',
                 'birth_date' => 'required',
                 'contact_number' => 'required|numeric',
-                'email' => 'required',
+                'email' => 'required|unique:agents,email',
                 'quota' => 'required',
             ],
             'update' => [
                 'firstname' => 'required|alpha',
+                'middlename' => 'alpha|nullable',
                 'lastname' => 'required|alpha',
                 'address' => 'required',
                 'gender' => 'required',
                 'birth_date' => 'required',
                 'contact_number' => 'required|numeric',
-                'email' => 'required',
+                'email' => ['required', Rule::unique('agents', 'email')->ignore($request->route('agent'))],
                 'quota' => 'required',
 
             ]
@@ -51,6 +54,9 @@ class AgentController extends CRUDController
     public function afterStore($model)
     {
         User::create([
+            'firstname' => $this->validatedInput['firstname'],
+            'middlename' => $this->validatedInput['middlename'],
+            'lastname' => $this->validatedInput['lastname'],
             'email' => $this->validatedInput['email'],
             'role' => 'Agent',
             'username' => $this->validatedInput['email'],
@@ -58,4 +64,5 @@ class AgentController extends CRUDController
 
         ]);
     }
+
 }

@@ -23,7 +23,7 @@
             <tbody>
             @forelse($resourceList as $row)
                 <tr>
-                    <td scope="row">{{ ucwords($row->firstname) . ucwords($row->middlename) . ucwords($row->lastname)  }}</td>
+                    <td scope="row">{{ ucwords($row->firstname) . ' ' . ucwords($row->middlename) . ' ' . ucwords($row->lastname)  }}</td>
                     <td scope="row">{{ $row->address }}</td>
                     <td scope="row">{{ ucfirst($row->gender) }}</td>
                     <td scope="row">{{ $row->birth_date}}</td>
