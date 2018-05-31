@@ -19,6 +19,9 @@
                     <a class="nav-link" href="{{ route('agents.index') }}">
                         Agents
                     </a>
+                    <a class="nav-link" href="{{ route('users.index') }}">
+                        Users
+                    </a>
                 @endif
                 <a class="nav-link" href="{{ route('clients.index') }}">
                     Clients

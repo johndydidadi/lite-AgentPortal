@@ -16,9 +16,9 @@ class AgentController extends CRUDController
         $this->resourceModel = $model;
         $this->validationRules = [
             'store' => [
-                'firstname' => 'required|alpha',
-                'middlename' => 'alpha|nullable',
-                'lastname' => 'required|alpha',
+                'firstname' => 'required|alpha_spaces',
+                'middlename' => 'nullable',
+                'lastname' => 'required',
                 'address' => 'required',
                 'gender' => 'required',
                 'role' => 'nullable',
@@ -28,12 +28,12 @@ class AgentController extends CRUDController
                 'quota' => 'required',
             ],
             'update' => [
-                'firstname' => 'required|alpha',
-                'middlename' => 'alpha|nullable',
-                'lastname' => 'required|alpha',
+                'firstname' => 'required',
+                'middlename' => 'anullable',
+                'lastname' => 'required',
                 'address' => 'required',
                 'gender' => 'required',
-                'role' => 'nullable,'
+                'role' => 'nullable',
                 'birth_date' => 'required',
                 'contact_number' => 'required|numeric',
                 'email' => ['required', Rule::unique('agents', 'email')->ignore($request->route('agent'))],

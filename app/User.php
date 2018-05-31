@@ -39,4 +39,10 @@ class User extends Authenticatable
     {
        return "{$this->firstname} {$this->middlename[0]} {$this->lastname}";
     }
+    
+        public function scopeFieldsForMasterList($query)
+    {
+        return $query;
+    }
 }
+

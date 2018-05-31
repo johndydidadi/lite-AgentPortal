@@ -25,7 +25,9 @@ class ServiceController extends CRUDController
                 'monthly_price' => 'nullable'
         	],
         	'update' => [
-        		'service' => ['required', Rule::unique('services', 'service')->ignore($request->route('service'))],
+        		'service' => [
+                    Rule::unique('services', 'service')->ignore($request->route('service'))
+                ],
                 'payment_type' => 'required',
                 'otp_price' => 'nullable',
                 'annual_price' => 'nullable',
