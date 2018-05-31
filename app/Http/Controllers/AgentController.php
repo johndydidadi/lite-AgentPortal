@@ -21,6 +21,7 @@ class AgentController extends CRUDController
                 'lastname' => 'required|alpha',
                 'address' => 'required',
                 'gender' => 'required',
+                'role' => 'nullable',
                 'birth_date' => 'required',
                 'contact_number' => 'required|numeric',
                 'email' => 'required|unique:agents,email',
@@ -32,6 +33,7 @@ class AgentController extends CRUDController
                 'lastname' => 'required|alpha',
                 'address' => 'required',
                 'gender' => 'required',
+                'role' => 'nullable,'
                 'birth_date' => 'required',
                 'contact_number' => 'required|numeric',
                 'email' => ['required', Rule::unique('agents', 'email')->ignore($request->route('agent'))],
