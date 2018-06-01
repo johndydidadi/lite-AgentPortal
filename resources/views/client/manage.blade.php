@@ -12,15 +12,15 @@
                 @if($resourceData->id)
                     {!! Form::model($resourceData, ['url' => MyHelper::resource('update', ['id' => $resourceData->id]), 'method' => 'patch']) !!}
                 @else
-                    {!! Form::open(['url' => Myhelper::resource('store'), 'method' => 'post']) !!}
+                    {!! Form::open(['url' => Myhelper::resource('store'),'class' => 'ajax', 'method' => 'post']) !!}
                 @endif
                 {!! Form::inputGroup('text', 'Company', 'company') !!}
                 {!! Form::inputGroup('text', 'Representative', 'representative') !!}
                 {!! Form::inputGroup('text', 'Contact Number', 'contact_number') !!}
                 {!! Form::inputGroup('text', 'Address', 'address') !!}
                 {!! Form::inputGroup('text', 'Nature Of Business', 'nature_of_business') !!}
-                {!! Form::selectGroup('Services', 'services', $resourceData->pluck('service','id')) !!}
-                {{-- NEEDS TO DETERMINE ID FOR ['inhouse' , 'agent based'--}}
+                {!! Form::selectGroup ('Service','services',$services) !!}
+               
                 <hr>
                 <button class="btn btn-sm {{ $resourceData->id ? 'btn-outline-info' : 'btn-outline-success' }}">
                     {{ $resourceData->id ? 'Update' : 'Create' }}

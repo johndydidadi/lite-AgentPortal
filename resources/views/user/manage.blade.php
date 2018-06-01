@@ -1,8 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-
-	{!! Form::open (['action'=> 'UserController@store','method' => 'POST']) !!}
+	
+	@if($resourceData->id)
+        {!! Form::model($resourceData, ['url' => MyHelper::resource('update', ['id' => $resourceData->id]), 'method' => 'patch']) !!}
+    @else
+        {!! Form::open (['url' => Myhelper::resource('store'), 'method' => 'post']) !!}
+    @endif
 		{!! Form::inputGroup ('text', 'First Name', 'firstname') !!}
 		{!! Form::inputGroup ('text', 'Last Name', 'lastname') !!}
 		{!! Form::inputGroup ('email', 'E-mail', 'email') !!}

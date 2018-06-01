@@ -16,11 +16,11 @@
         <ul class="nav flex-column mb-2">
             <li class="nav-item">
                 @if(Auth::user()->role == 'Admin')
-                    <a class="nav-link" href="{{ route('agents.index') }}">
-                        Agents
-                    </a>
                     <a class="nav-link" href="{{ route('users.index') }}">
                         Users
+                    </a>
+                    <a class="nav-link" href="{{ route('agents.index') }}">
+                        Agents
                     </a>
                 @endif
                 <a class="nav-link" href="{{ route('clients.index') }}">

@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Agent;
-use App\User;
 use Illuminate\Http\Request;
 use App\Common\CRUDController;
 use Illuminate\Validation\Rule;
-
+use App\Agent;
+use App\User;
 class AgentController extends CRUDController
 {
     public function __construct(Agent $model, Request $request){
