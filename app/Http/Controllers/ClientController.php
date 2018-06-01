@@ -19,7 +19,7 @@ class ClientController extends CRUDController
                 'contact_number' => 'required',
                 'address' => 'required',
                 'nature_of_business' => 'required',
-                //'service' => 'required'
+                'service' => 'required'
             ],
             'update' => [
                 'company' => 'required',
@@ -27,7 +27,7 @@ class ClientController extends CRUDController
                 'contact_number' => 'required',
                 'address' => 'required',
                 'nature_of_business' => 'required',
-                //'service' => 'required'
+                'service' => 'required'
             ]    
         ];
     }

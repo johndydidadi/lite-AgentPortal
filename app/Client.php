@@ -13,6 +13,6 @@ class Client extends HRISModel
         'contact_number',
         'address',
         'nature_of_business',
-//        'service'
+        'service'
     ];
 }

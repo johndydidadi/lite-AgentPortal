@@ -19,7 +19,7 @@
                 {!! Form::inputGroup('text', 'Contact Number', 'contact_number') !!}
                 {!! Form::inputGroup('text', 'Address', 'address') !!}
                 {!! Form::inputGroup('text', 'Nature Of Business', 'nature_of_business') !!}
-                {{--SERVICES--}}
+                {!! Form::selectGroup('Services', 'services', $resourceData->pluck('service','id')) !!}
                 {{-- NEEDS TO DETERMINE ID FOR ['inhouse' , 'agent based'--}}
                 <hr>
                 <button class="btn btn-sm {{ $resourceData->id ? 'btn-outline-info' : 'btn-outline-success' }}">
