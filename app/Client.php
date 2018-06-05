@@ -15,4 +15,9 @@ class Client extends HRISModel
         'nature_of_business',
         'services'
     ];
+
+    public function clientService()
+    {
+    	return $this->hasMany('App\ClientService', 'client_id');
+    }
 }

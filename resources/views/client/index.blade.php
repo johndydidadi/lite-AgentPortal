@@ -27,7 +27,7 @@
                     <td scope="row">{{ $row->contact_number }}</td>
                     <td scope="row">{{ $row->address }}</td>
                     <td scope="row">{{ $row->nature_of_business }}</td>
-                    <td scope="row">{{ $row->services }}</td>
+                    <td scope="row"><!-- {{ $row->services }} --></td>
                     <td>{!! Form::indexActions($row->id) !!}</td>
                 </tr>
             @empty

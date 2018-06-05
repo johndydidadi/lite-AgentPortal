@@ -16,4 +16,9 @@ class Service extends HRISModel
         'quarterly_price',
         'monthly_price'
     ];
+
+    public function clientService()
+    {
+    	return $this->hasMany('App\ClientService', 'service_id');
+    }
 }

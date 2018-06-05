@@ -15,7 +15,7 @@ class ClientController extends CRUDController
         $this->validationRules = [
             'store' => [
                 'company' => 'required',
-                'representative' => 'required|alpha',
+                'representative' => 'required',
                 'contact_number' => 'required',
                 'address' => 'required',
                 'nature_of_business' => 'required',
@@ -23,7 +23,7 @@ class ClientController extends CRUDController
             ],
             'update' => [
                 'company' => 'required',
-                'representative' => 'required|alpha',
+                'representative' => 'required',
                 'contact_number' => 'required',
                 'address' => 'required',
                 'nature_of_business' => 'required',

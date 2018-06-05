@@ -19,7 +19,7 @@
                 {!! Form::inputGroup('text', 'Contact Number', 'contact_number') !!}
                 {!! Form::inputGroup('text', 'Address', 'address') !!}
                 {!! Form::inputGroup('text', 'Nature Of Business', 'nature_of_business') !!}
-                {!! Form::selectGroup ('Service','services',$services) !!}
+                {!! Form::selectGroup ('Service','services', $services) !!}
                
                 <hr>
                 <button class="btn btn-sm {{ $resourceData->id ? 'btn-outline-info' : 'btn-outline-success' }}">
