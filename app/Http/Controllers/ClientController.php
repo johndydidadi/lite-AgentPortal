@@ -32,17 +32,29 @@ class ClientController extends CRUDController
         ];
     }
 
+    public function beforeStore()
+    {
+        // dd(request()->all());
+    }
+
     public function beforeUpdate()
     {
-        $this->beforeStore();
+        // $this->beforeStore();
+    }
+
+    public function afterStore($client)
+    {
+        $client->services()->attach(request()->services);
     }
 
     public function beforeCreate()
     {   
         $this->viewData['services'] = Service::pluck('service','id')->prepend('Select Services','');   
     }
-     public function beforeEdit($model)
+
+     public function beforeEdit($client)
     {   
-        $this->beforeCreate();
+        $client->load('services');
+        dd($client->toArray());
     }
 }

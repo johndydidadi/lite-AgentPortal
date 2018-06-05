@@ -13,11 +13,11 @@ class Client extends HRISModel
         'contact_number',
         'address',
         'nature_of_business',
-        'services'
+        // 'services'
     ];
 
-    public function clientService()
+    public function services()
     {
-    	return $this->hasMany('App\ClientService', 'client_id');
+    	return $this->belongsToMany('App\Service', 'client_services', 'client_id', 'service_id');
     }
 }
