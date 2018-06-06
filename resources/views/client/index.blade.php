@@ -47,9 +47,11 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                           
                                             <tr>
-                                                <td>{{ $row->service }}</td>
+                                                <td></td>
                                             </tr>
+                                           
                                         </tbody>
                                     </table>
                                 </div>

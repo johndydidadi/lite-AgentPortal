@@ -18,9 +18,4 @@ class ClientServiceController extends Controller
             ] 
         ];
     }
-
-    public function afterStore()
-    {
-
-    }
 }
