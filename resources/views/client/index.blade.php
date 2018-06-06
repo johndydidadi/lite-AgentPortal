@@ -41,11 +41,16 @@
                                 <div class="modal-body">
                                     <table class="table table-sm">
                                         <thead>
-                                        <tr>
-                                            <th scope="col">Service</th>
-                                            <th scope="col">Type</th>
-                                        </tr>
+                                            <tr>
+                                                <th scope="col">Service</th>
+                                                <th scope="col">Type</th>
+                                            </tr>
                                         </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>{{ $row->service }}</td>
+                                            </tr>
+                                        </tbody>
                                     </table>
                                 </div>
                                 <div class="modal-footer">

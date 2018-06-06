@@ -19,7 +19,6 @@ class ClientController extends CRUDController
                 'contact_number' => 'required',
                 'address' => 'required',
                 'nature_of_business' => 'required',
-                'services' => 'required'
             ],
             'update' => [
                 'company' => 'required',
@@ -27,7 +26,6 @@ class ClientController extends CRUDController
                 'contact_number' => 'required',
                 'address' => 'required',
                 'nature_of_business' => 'required',
-                'services' => 'required'
             ]    
         ];
     }
@@ -42,9 +40,9 @@ class ClientController extends CRUDController
         // $this->beforeStore();
     }
 
-    public function afterStore($client)
+    public function afterStore($model)
     {
-        $client->services()->attach(request()->services);
+        $model->services()->attach(request()->services);
     }
 
     public function beforeCreate()
@@ -54,7 +52,6 @@ class ClientController extends CRUDController
 
      public function beforeEdit($client)
     {   
-        $client->load('services');
-        dd($client->toArray());
+        $this->beforeCreate();
     }
 }

@@ -12,7 +12,7 @@ class Client extends HRISModel
         'representative',
         'contact_number',
         'address',
-        'nature_of_business',
+        'nature_of_business'
         // 'services'
     ];
 

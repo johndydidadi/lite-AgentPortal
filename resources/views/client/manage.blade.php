@@ -12,7 +12,7 @@
                 @if($resourceData->id)
                     {!! Form::model($resourceData, ['url' => MyHelper::resource('update', ['id' => $resourceData->id]), 'method' => 'patch']) !!}
                 @else
-                    {!! Form::open(['url' => Myhelper::resource('store'),    'method' => 'post']) !!}
+                    {!! Form::open(['url' => Myhelper::resource('store'), 'method' => 'post']) !!}
                 @endif
                 {!! Form::inputGroup('text', 'Company', 'company') !!}
                 {!! Form::inputGroup('text', 'Representative', 'representative') !!}
@@ -32,7 +32,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>{!! Form::selectGroup(null, 'services[]', $services) !!}</td>
+                                <td>{!! Form::selectGroup(null, 'services', $services) !!}</td>
                                 <td>
                                     <button class="btn btn-danger remove-line"><i class="fa fa-times"></i></button>
                                 </td>
@@ -53,28 +53,29 @@
     </div>
 
     <script>
-        $(document).ready(function(){
-            var i = 1;
-            $('#add').click(function(){
-                i++;
-                $('#dynamic_field').append('<tr id="row'+i+'"><td>{!! Form::selectGroup("Service", "services", $services) !!}</td><td><button name="remove" id="'+i+'" class="btn btn-outline-danger btn_remove btn-sm">X</button></td></tr>');
-            });
-            $(document).on('click','.btn_remove', function(){
-                var button_id = $(this).attr("id");
-                $("#row"+button_id+"").remove();
-            });
-            $('#submit').click(function(){
-                $.ajax({
-                    url:"#",
-                    method:"POST",
-                    data:$('#add_service').serialize(),
-                    success:function(data){
-                        alert(data);
-                        $('#add_service')[0].reset(); 
-                    }
-                });
-            });
-        });
+        // $(document).ready(function(){
+        //     var i = 1;
+        //     $('#add').click(function(){
+        //         i++;
+        //         $('#dynamic_field').append('<tr id="row'+i+'"><td>{!! Form::selectGroup(null, "services[]", $services) !!}</td><td><button name="remove" id="'+i+'" class="btn btn-outline-danger btn_remove btn-sm">X</button></td></tr>');
+        //     });
+        //     $(document).on('click','.btn_remove', function(){
+        //         var button_id = $(this).attr("id");
+        //         $("#row"+button_id+"").remove();
+        //     });
+        //     $('#submit').click(function(){
+        //         $.ajax({
+        //             url:"#",
+        //             method:"POST",
+        //             data:$('#add_service').serialize(),
+        //             success:function(data){
+        //                 alert(data);
+        //                 $('#add_service')[0].reset(); 
+        //             }
+        //         });
+        //     });
+        // });
+
          $(document).ready(function(){
             $('.add-line').click(function () {
                 var tr = $('.dynamic-table tbody tr:first').clone();
