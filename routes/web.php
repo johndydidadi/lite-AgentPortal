@@ -25,7 +25,7 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::resource('agents', 'AgentController');
 	Route::resource('clients', 'ClientController');
 	Route::resource('services', 'ServiceController');
+	Route::get('get-services/{client}', 'ClientServiceController@showServices');
 });
 
 Route::resource('users', 'UserController');
-Route::get('get-services/{client}', 'ClientServiceController@showServices');
