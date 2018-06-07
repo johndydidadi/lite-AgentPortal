@@ -59,10 +59,22 @@
                 tr.find('select').val('');
                 tr.appendTo($('.dynamic-table tbody'));
 
-                $('select').change(function () {
-                    $('select option').prop('disabled', false);
-                    $('select').not($(this)).find('option[value="' + $(this).val() + '"]').prop('disabled', true);
+                $('select').change(function(){
+                    if($(this).attr('id') == 'select' && $(this).val() == val('')){
+                        $('select').not(this).prop('disabled', true).val('Disabled');
+                    } else {
+                        $('select').not(this).removeProp('disabled');
+                        
+                        $('select option').removeProp('disabled');
+                        $('select').each(function(){
+                            var val = $(this).val();
+                            if(val != 'Default' || val != 'Disabled'){
+                                $('select option[value="'+val+'"]').not(this).prop('disabled', true);
+                            }
+                        });
+                    }
                 });
+
             });
 
 
@@ -75,7 +87,10 @@
                 }
             });
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7a87e9cf3c379d97c67501cb63fe40b706727fd1
         });
     </script>
 @endsection
