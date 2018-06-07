@@ -81,8 +81,7 @@
                 var tr = $('.dynamic-table tbody tr:first').clone();
                 tr.find('select').val('')
                 tr.appendTo($('.dynamic-table tbody'))
-
-            })
+            });
         });
 
     </script>
