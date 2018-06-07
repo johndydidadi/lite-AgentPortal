@@ -20,7 +20,6 @@ class CreateClientsTable extends Migration
             $table->string('contact_number');
             $table->string('address');
             $table->string('nature_of_business');
-            $table->enum('services' , ['']);
             $table->timestamps();
             $table->softDeletes();
         });
