@@ -58,9 +58,13 @@
                 var tr = $('.dynamic-table tbody tr:first').clone();
                 tr.find('select').val('')
                 tr.appendTo($('.dynamic-table tbody'))
+                count++;
             })
+
             $(document).on('click','.remove-line',function() {
-                 $(this).closest('tr').remove();
+                if ($('.dynamic-table tbody tr').length != 1) {
+                     $(this).closest('tr').remove();
+                }
             });
         });
 
