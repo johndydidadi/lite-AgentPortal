@@ -53,37 +53,22 @@
     </div>
 
     <script>
-        // $(document).ready(function(){
-        //     var i = 1;
-        //     $('#add').click(function(){
-        //         i++;
-        //         $('#dynamic_field').append('<tr id="row'+i+'"><td>{!! Form::selectGroup(null, "services[]", $services) !!}</td><td><button name="remove" id="'+i+'" class="btn btn-outline-danger btn_remove btn-sm">X</button></td></tr>');
-        //     });
-        //     $(document).on('click','.btn_remove', function(){
-        //         var button_id = $(this).attr("id");
-        //         $("#row"+button_id+"").remove();
-        //     });
-        //     $('#submit').click(function(){
-        //         $.ajax({
-        //             url:"#",
-        //             method:"POST",
-        //             data:$('#add_service').serialize(),
-        //             success:function(data){
-        //                 alert(data);
-        //                 $('#add_service')[0].reset(); 
-        //             }
-        //         });
-        //     });
-        // });
-
          $(document).ready(function(){
             $('.add-line').click(function () {
                 var tr = $('.dynamic-table tbody tr:first').clone();
                 tr.find('select').val('')
                 tr.appendTo($('.dynamic-table tbody'))
+<<<<<<< HEAD
+=======
+            })
+
+            $(document).on('click','.remove-line',function() {
+                if ($('.dynamic-table tbody tr').length != 1) {
+                     $(this).closest('tr').remove();
+                }
+>>>>>>> dcd808ca611e70bc701b143b2187ea40bd495728
             });
         });
 
     </script>
 @endsection
-
