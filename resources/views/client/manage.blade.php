@@ -56,8 +56,13 @@
          $(document).ready(function(){
             $('.add-line').click(function () {
                 var tr = $('.dynamic-table tbody tr:first').clone();
-                tr.find('select').val('')
-                tr.appendTo($('.dynamic-table tbody'))
+                tr.find('select').val('');
+                tr.appendTo($('.dynamic-table tbody'));
+
+                $('select').change(function () {
+                    $('select option').prop('disabled', false);
+                    $('select').not($(this)).find('option[value="' + $(this).val() + '"]').prop('disabled', true);
+                });
             });
 
 
@@ -69,6 +74,13 @@
                     $(this).closest('tr').find('select').val('');
                 }
             });
+
+            $('select').change(function () {
+                    $('select option').prop('disabled', false);
+                    $('select').not($(this)).find('option[value="' + $(this).val() + '"]').prop('disabled', true);
+            });
+
+            
 
         });
     </script>
