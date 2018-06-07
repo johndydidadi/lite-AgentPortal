@@ -9,7 +9,11 @@ class ApiController extends CRUDController
 {
     public function displayData(Request $request){
 
+  //   	$data = json_encode(User::all());
 
+		// return response()->json([
+  //               'users' => $users
+  //           ]);
 
     }
 }

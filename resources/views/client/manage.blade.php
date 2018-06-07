@@ -32,7 +32,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>{!! Form::selectGroup(null, 'services', $services) !!}</td>
+                                <td>{!! Form::selectGroup(null, 'services[]', $services) !!}</td>
                                 <td>
                                     <button class="btn btn-danger remove-line"><i class="fa fa-times"></i></button>
                                 </td>

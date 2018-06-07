@@ -40,9 +40,9 @@ class ClientController extends CRUDController
         // $this->beforeStore();
     }
 
-    public function afterStore($model)
+    public function afterStore($client)
     {
-        $model->services()->attach(request()->services);
+        $client->services()->attach(request()->services);
     }
 
     public function beforeCreate()

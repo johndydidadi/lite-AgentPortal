@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Common\CRUDController;
 use Illuminate\Http\Request;
 
-class ClientServiceController extends Controller
+class ClientServiceController extends CRUDController
 {
     public function __construct(Request $request)
     {
