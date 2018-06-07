@@ -23,11 +23,11 @@
              <!--    <button class="btn btn-sm {{ $resourceData->id ? 'btn-outline-info' : 'btn-outline-success' }}">
                     {{ $resourceData->id ? 'Update' : 'Create' }}
                 </button> -->
-                    <table class="table table-bordered dynamic-table" id="dynamic_field">
-                        <thead>
-                            <tr>
-                                <th>Service</th>
-                                <th></th>
+                    <table class="table table-bordered dynamic-table" id="dynamic_field"><!--parent-->
+                        <thead><!--child of table, parent of tr-->
+                            <tr><!--child of thead, descendant of table, parent of th-->
+                                <th>Service</th><!--child of tr, sibling of th, descendant of thead and table -->
+                                <th></th><!--sibling of th-->
                             </tr>
                         </thead>
                         <tbody>
@@ -58,17 +58,18 @@
                 var tr = $('.dynamic-table tbody tr:first').clone();
                 tr.find('select').val('')
                 tr.appendTo($('.dynamic-table tbody'))
-<<<<<<< HEAD
-=======
-            })
+            });
 
-            $(document).on('click','.remove-line',function() {
+
+             $(document).on('click','.remove-line',function(e) {
+                e.preventDefault();
                 if ($('.dynamic-table tbody tr').length != 1) {
                      $(this).closest('tr').remove();
+                } else {
+                    $(this).closest('tr').find('select').val('');
                 }
->>>>>>> dcd808ca611e70bc701b143b2187ea40bd495728
             });
-        });
 
+        });
     </script>
 @endsection

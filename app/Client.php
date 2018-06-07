@@ -13,7 +13,6 @@ class Client extends HRISModel
         'contact_number',
         'address',
         'nature_of_business'
-        // 'services'
     ];
 
     public function services()

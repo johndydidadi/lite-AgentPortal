@@ -41,17 +41,20 @@
                                 <div class="modal-body">
                                     <table class="table table-sm">
                                         <thead>
+                                        
                                             <tr>
                                                 <th scope="col">Service</th>
                                                 <th scope="col">Type</th>
                                             </tr>
+                                        
                                         </thead>
                                         <tbody>
-                                           
+                                           @foreach($resourceList as $row)
                                             <tr>
-                                                <td></td>
+                                                <td>{{ $row->service }}</td>
+                                                <td>{{ $row->payment_type }}</td>
                                             </tr>
-                                           
+                                           @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -72,5 +75,26 @@
         </table>
         </tbody>
     </div>
+
+    <script>
+        $("form").submit(function(e){
+            e.preventDefault();
+            var form = $(this);
+            $.ajax({
+                type: "POST",
+                url : "http://laravel.test/ajax",
+                data : form.serialize(),
+                dataType : "json",
+                success : function(data){
+                    if(data.length > 0) {
+                          console.log(data);
+                        } else {
+                          console.log('Nothing in the DB');
+                        }
+                    }
+                }, "json");
+            });
+    </script>
+
 @endsection
 

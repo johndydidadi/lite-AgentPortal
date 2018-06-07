@@ -53,6 +53,5 @@ class ClientController extends CRUDController
      public function beforeEdit($client)
     {   
         $this->beforeCreate();
-        dd($request->toArray());
     }
 }
