@@ -54,4 +54,10 @@ class ClientController extends CRUDController
     {   
         $this->beforeCreate();
     }
+
+    public function beforeIndex($query)
+    {   
+        $query->with('services');
+    }
+
 }

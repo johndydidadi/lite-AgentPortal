@@ -1,21 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Client;
 use App\Common\CRUDController;
 use Illuminate\Http\Request;
 
-class ClientServiceController extends CRUDController
+class ClientServiceController extends Controller
 {
-    public function __construct(Request $request)
+    public function showServices(Request $request, Client $client)
     {
-    	parent::__construct();
-
-    	$this->resourceModel=$model;
-    	$this->validationRules = [
-            'store' => [
-				'service_id' => $request->service_id,
-				'client_id' => $request->client_id
-            ] 
-        ];
+    	
+        dd($client->toArray());
     }
 }

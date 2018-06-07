@@ -28,9 +28,9 @@
                     <td scope="row">{{ $row->address }}</td>
                     <td scope="row">{{ $row->nature_of_business }}</td>
                     <td scope="row">
-                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#favoritesModal"><i class="fas fa-eye"></i> Services</button>
+                        <button type="button" class="btn btn-primary btn-sm get-services"><i class="fas fa-eye"></i> Services</button>
 
-                        <div class="modal fade" id="favoritesModal" tabindex="-1" role="dialog" aria-labelledby="favoritesModalLabel">
+                        <div class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="favoritesModalLabel">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -49,12 +49,13 @@
                                         
                                         </thead>
                                         <tbody>
-                                           @foreach($resourceList as $row)
+                                            @forelse( $row->services as $data )
                                             <tr>
-                                                <td>{{ $row->service }}</td>
-                                                <td>{{ $row->payment_type }}</td>
+                                                <td>{{ $data->service }}</td>
+                                                <td>{{ $data->payment_type }}</td>
                                             </tr>
-                                           @endforeach
+                                            @empty
+                                            @endforelse
                                         </tbody>
                                     </table>
                                 </div>
@@ -77,23 +78,11 @@
     </div>
 
     <script>
-        $("form").submit(function(e){
-            e.preventDefault();
-            var form = $(this);
-            $.ajax({
-                type: "POST",
-                url : "http://laravel.test/ajax",
-                data : form.serialize(),
-                dataType : "json",
-                success : function(data){
-                    if(data.length > 0) {
-                          console.log(data);
-                        } else {
-                          console.log('Nothing in the DB');
-                        }
-                    }
-                }, "json");
+        $(document).ready(function(){
+            $(".get-services").click(function(){
+                $(this).closest('tr').find('.modal').modal('show');
             });
+        });
     </script>
 
 @endsection
