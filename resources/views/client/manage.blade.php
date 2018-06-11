@@ -20,14 +20,11 @@
                 {!! Form::inputGroup('text', 'Address', 'address') !!}
                 {!! Form::inputGroup('text', 'Nature Of Business', 'nature_of_business') !!}
                 <hr>
-             <!--    <button class="btn btn-sm {{ $resourceData->id ? 'btn-outline-info' : 'btn-outline-success' }}">
-                    {{ $resourceData->id ? 'Update' : 'Create' }}
-                </button> -->
-                    <table class="table table-bordered dynamic-table" id="dynamic_field"><!--parent-->
-                        <thead><!--child of table, parent of tr-->
-                            <tr><!--child of thead, descendant of table, parent of th-->
-                                <th>Service</th><!--child of tr, sibling of th, descendant of thead and table -->
-                                <th></th><!--sibling of th-->
+                    <table class="table table-bordered dynamic-table" id="dynamic_field">
+                        <thead>
+                            <tr>
+                                <th>Service</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -44,7 +41,9 @@
                             </tr>
                         </tfoot>
                     </table>
-                        <button id="submit" type="submit" class="btn btn-outline-success btn-sm">Submit</button>
+                         <button class="btn btn-sm {{ $resourceData->id ? 'btn-outline-info' : 'btn-outline-success' }}">
+                            {{ $resourceData->id ? 'Update' : 'Create' }}
+                         </button>
                         <br>
                     {!! Form::close() !!}
                 </div>
@@ -53,30 +52,35 @@
     </div>
 
     <script>
-         $(document).ready(function(){
+        $(document).ready(function(){
             $('.add-line').click(function () {
                 var tr = $('.dynamic-table tbody tr:first').clone();
                 tr.find('select').val('');
                 tr.appendTo($('.dynamic-table tbody'));
 
-                $('select').change(function(){
-                    if($(this).attr('id') == 'select' && $(this).val() == val('')){
-                        $('select').not(this).prop('disabled', true).val('Disabled');
-                    } else {
-                        $('select').not(this).removeProp('disabled');
-                        
-                        $('select option').removeProp('disabled');
-                        $('select').each(function(){
-                            var val = $(this).val();
-                            if(val != 'Default' || val != 'Disabled'){
-                                $('select option[value="'+val+'"]').not(this).prop('disabled', true);
-                            }
-                        });
-                    }
-                });
+                // $('select').change(function(){
+                //     if($(this).attr('id') == 'select' && $(this).val() == val('')){
+                //         $('select').not(this).prop('disabled', true).val('Disabled');
+                //     } else {
+                //         $('select').not(this).removeProp('disabled');
+                    
+                //         $('select option').removeProp('disabled');
+                //         $('select').each(function(){
+                //             var val = $(this).val();
+                //             if(val != 'Default' || val != 'Disabled'){
+                //                 $('select option[value="'+val+'"]').not(this).prop('disabled', true);
+                //             }
+                //         });
+                //     }
+                // });
 
+                $('select').change(function () {
+                    if ($('select option[value="' + $(this).val() + '"]:selected').length > 1){
+                        $(this).val(0);
+                        alert('Service already availed! Please choose another.');
+                }
             });
-
+        });
 
              $(document).on('click','.remove-line',function(e) {
                 e.preventDefault();
@@ -87,10 +91,6 @@
                 }
             });
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 7a87e9cf3c379d97c67501cb63fe40b706727fd1
         });
     </script>
 @endsection
