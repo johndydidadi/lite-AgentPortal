@@ -53,7 +53,8 @@
 
     <script>
         $(document).ready(function(){
-            $('.add-line').click(function () {
+
+            $('.add-line').click(function(){
                 var tr = $('.dynamic-table tbody tr:first').clone();
                 tr.find('select').val('');
                 tr.appendTo($('.dynamic-table tbody'));
@@ -74,7 +75,7 @@
                 //     }
                 // });
 
-                $('select').change(function () {
+                $('select').change(function(){
                     if ($('select option[value="' + $(this).val() + '"]:selected').length > 1){
                         $(this).val(0);
                         alert('Service already availed! Please choose another.');

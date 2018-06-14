@@ -5,6 +5,11 @@
                 <a class="nav-link" href="#">
                     Dashboard
                 </a>
+                @if(Auth::user()->role=='Agent')
+                    <a class="nav-link" href="#">
+                        Settings
+                    </a>
+                @endif
             </li>
         </ul>
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">

@@ -16,6 +16,7 @@ class Agent extends HRISModel
         'birth_date',
         'contact_number',
         'email',
+        'password',
         'quota'
     ];
 }

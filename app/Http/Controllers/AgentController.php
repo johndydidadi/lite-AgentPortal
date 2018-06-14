@@ -24,6 +24,7 @@ class AgentController extends CRUDController
                 'birth_date' => 'required',
                 'contact_number' => 'required|numeric',
                 'email' => 'required|unique:agents,email',
+                'password' => 'required|min:8|confirmed',
                 'quota' => 'required',
             ],
             'update' => [
@@ -36,6 +37,7 @@ class AgentController extends CRUDController
                 'birth_date' => 'required',
                 'contact_number' => 'required|numeric',
                 'email' => ['required', Rule::unique('agents', 'email')->ignore($request->route('agent'))],
+                'password' => 'required',
                 'quota' => 'required',
 
             ]
@@ -45,6 +47,7 @@ class AgentController extends CRUDController
     public function beforeStore()
     {
         $this->validatedInput['quota'] = str_replace(',' , '', $this->validatedInput['quota']);
+        $this->validatedInput['password'] = bcrypt($this->validatedInput['password']);
     }
 
     public function beforeUpdate()
@@ -61,7 +64,7 @@ class AgentController extends CRUDController
             'email' => $this->validatedInput['email'],
             'role' => 'Agent',
             'username' => $this->validatedInput['email'],
-            'password' => '1234',
+            'password' => $this->validatedInput['password'],
 
         ]);
     }
