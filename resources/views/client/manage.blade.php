@@ -11,63 +11,68 @@
             <div class="my-3 p-3 bg-white rounded box-shadow">
                 @if($resourceData->id)
                     {!! Form::model($resourceData, ['url' => MyHelper::resource('update', ['id' => $resourceData->id]), 'method' => 'patch']) !!}
-                {!! Form::inputGroup('text', 'Company', 'company') !!}
-                {!! Form::inputGroup('text', 'Representative', 'representative') !!}
-                {!! Form::inputGroup('text', 'Contact Number', 'contact_number') !!}
-                {!! Form::inputGroup('text', 'Address', 'address') !!}
-                {!! Form::inputGroup('text', 'Nature Of Business', 'nature_of_business') !!}
-                <table class="table table-bordered dynamic-table" id="dynamic_field">
-                        <thead>
-                            <tr>
-                                <th>Service</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>{!! Form::selectGroup(null, 'services[]', $services) !!}</td>
-                                <td>
-                                    <button class="btn btn-danger remove-line"><i class="fa fa-times"></i></button>
-                                </td>
-                            </tr>
-                            
+                    {!! Form::inputGroup('text', 'Company', 'company') !!}
+                    {!! Form::inputGroup('text', 'Representative', 'representative') !!}
+                    {!! Form::inputGroup('text', 'Contact Number', 'contact_number') !!}
+                    {!! Form::inputGroup('text', 'Address', 'address') !!}
+                    {!! Form::inputGroup('text', 'Nature Of Business', 'nature_of_business') !!}
+                    <table class="table table-bordered dynamic-table" id="dynamic_field">
+                            <thead>
+                                <tr>
+                                    <th>Service</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                @forelse($resourceData->services as $row)
+
+                                    <tr>
+                                        {!! Form::hidden("services[$loop->index][id]", $row->id) !!}
+                                        <td>{!! Form::selectGroup(null, 'services[$loop->index][service]', $services,$row->id) !!}</td>
+                                        <td>
+                                            <button class="btn btn-danger remove-line"><i class="fa fa-times"></i></button>
+                                        </td>
+                                    </tr>
+                                @empty
+                                @endforelse
 
 
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td><button type="button" class="btn btn-primary add-line"><i class="fa fa-plus"></i> Add new service</button></td>
-                            </tr>
-                        </tfoot>
-                </table>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td><button type="button" class="btn btn-primary add-line"><i class="fa fa-plus"></i> Add new service</button></td>
+                                </tr>
+                            </tfoot>
+                    </table>
                 @else
                     {!! Form::open(['url' => Myhelper::resource('store'), 'method' => 'post']) !!}
-                {!! Form::inputGroup('text', 'Company', 'company') !!}
-                {!! Form::inputGroup('text', 'Representative', 'representative') !!}
-                {!! Form::inputGroup('text', 'Contact Number', 'contact_number') !!}
-                {!! Form::inputGroup('text', 'Address', 'address') !!}
-                {!! Form::inputGroup('text', 'Nature Of Business', 'nature_of_business') !!}
-                <table class="table table-bordered dynamic-table" id="dynamic_field">
-                        <thead>
-                            <tr>
-                                <th>Service</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>{!! Form::selectGroup(null, 'services[]', $services) !!}</td>
-                                <td>
-                                    <button class="btn btn-danger remove-line"><i class="fa fa-times"></i></button>
-                                </td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td><button type="button" class="btn btn-primary add-line"><i class="fa fa-plus"></i> Add new service</button></td>
-                            </tr>
-                        </tfoot>
-                </table>
+                    {!! Form::inputGroup('text', 'Company', 'company') !!}
+                    {!! Form::inputGroup('text', 'Representative', 'representative') !!}
+                    {!! Form::inputGroup('text', 'Contact Number', 'contact_number') !!}
+                    {!! Form::inputGroup('text', 'Address', 'address') !!}
+                    {!! Form::inputGroup('text', 'Nature Of Business', 'nature_of_business') !!}
+                    <table class="table table-bordered dynamic-table" id="dynamic_field">
+                            <thead>
+                                <tr>
+                                    <th>Service</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{!! Form::selectGroup(null, 'services[]', $services) !!}</td>
+                                    <td>
+                                        <button class="btn btn-danger remove-line"><i class="fa fa-times"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td><button type="button" class="btn btn-primary add-line"><i class="fa fa-plus"></i> Add new service</button></td>
+                                </tr>
+                            </tfoot>
+                    </table>
                 @endif    
 
                 <hr>
