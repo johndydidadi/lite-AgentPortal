@@ -402,7 +402,7 @@ class CRUDController extends Controller
 
     public function beforeEdit($model)
     {
-
+        
     }
 
     public function beforeUpdate()

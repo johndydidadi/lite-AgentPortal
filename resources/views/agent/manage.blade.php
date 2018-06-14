@@ -6,6 +6,7 @@
 @endsection
 
 @section('content')
+@json($errors->all())
     <div class="row">
         <div class="col-md-6">
             <div class="my-3 p-3 bg-white rounded box-shadow">

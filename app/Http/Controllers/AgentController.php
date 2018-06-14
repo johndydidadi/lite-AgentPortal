@@ -25,11 +25,11 @@ class AgentController extends CRUDController
                 'contact_number' => 'required|numeric',
                 'email' => 'required|unique:agents,email',
                 'password' => 'required|min:8',
-                'quota' => 'required',
+                'quota' => 'required'
             ],
             'update' => [
-                'firstname' => 'required',
-                'middlename' => 'anullable',
+                'firstname' => 'required|alpha_spaces',
+                'middlename' => 'nullable',
                 'lastname' => 'required',
                 'address' => 'required',
                 'gender' => 'required',
@@ -37,36 +37,18 @@ class AgentController extends CRUDController
                 'birth_date' => 'required',
                 'contact_number' => 'required|numeric',
                 'email' => ['required', Rule::unique('agents', 'email')->ignore($request->route('agent'))],
-                'password' => 'required',
-                'quota' => 'required',
+                'quota' => 'required'
 
             ]
         ];
     }
-
-    public function beforeStore()
-    {
-        $this->validatedInput['quota'] = str_replace(',' , '', $this->validatedInput['quota']);
-        $this->validatedInput['password'] = bcrypt($this->validatedInput['password']);
-    }
-
     public function beforeUpdate()
     {
         $this->beforeStore();
     }
-
-    public function afterStore($model)
+    public function beforeStore()
     {
-        User::create([
-            'firstname' => $this->validatedInput['firstname'],
-            'middlename' => $this->validatedInput['middlename'],
-            'lastname' => $this->validatedInput['lastname'],
-            'email' => $this->validatedInput['email'],
-            'role' => 'Agent',
-            'username' => $this->validatedInput['email'],
-            'password' => $this->validatedInput['password'],
-
-        ]);
+        $this->validatedInput['quota'] = str_replace(',' , '', $this->validatedInput['quota']);
     }
-
+    
 }
