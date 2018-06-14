@@ -25,6 +25,7 @@
                         {!! Form::inlineRadio('payment_type', 'one_time_payment', 'One Time Payment', null, ['class' => 'payment_type', 'id' => 'payment_type']) !!}
                     </div> --}}
                 </div><br>
+
                 <div class="row">
                     <div class="col-md-6">
                         {!! Form::inputGroup('text', 'Annual Price', 'annual_price', $resourceData->annual_price ?? 0.00, ['class' => 'price subscription']) !!}
@@ -33,22 +34,27 @@
                         {!! Form::inputGroup('text', 'Price', 'otp_price', $resourceData->otp_price ?? 0.00, ['class' => 'price', 'id' => 'OTP']) !!}   
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-md-6">
                         {!! Form::inputGroup('text', 'Semi-Annual Price', 'semi_annual_price', $resourceData->semi_annual_price ?? 0.00, ['class' => 'price subscription']) !!}
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-md-6">
                         {!! Form::inputGroup('text', 'Quarterly Price', 'quarterly_price', $resourceData->quarterly_price ?? 0.00, ['class' => 'price subscription']) !!}
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-md-6">
                         {!! Form::inputGroup('text', ' Monthly Price', 'monthly_price', $resourceData->monthly_price ?? 0.00, ['class' => 'price subscription']) !!}
                     </div>
                 </div>
+
                 <hr>
+                
                 <button class="btn btn-sm {{ $resourceData->id ? 'btn-outline-info' : 'btn-outline-success' }}">
                     {{ $resourceData->id ? 'Update' : 'Create' }}
                 </button>
