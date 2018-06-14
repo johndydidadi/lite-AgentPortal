@@ -24,7 +24,7 @@ class AgentController extends CRUDController
                 'birth_date' => 'required',
                 'contact_number' => 'required|numeric',
                 'email' => 'required|unique:agents,email',
-                'password' => 'required|min:8|confirmed',
+                'password' => 'required|min:8',
                 'quota' => 'required',
             ],
             'update' => [
