@@ -63,7 +63,7 @@
                                 <tr>
                                     <td>{!! Form::selectGroup(null, 'services[]', $services) !!}</td>
                                     <td>
-                                        <button class="btn btn-danger remove-line"><i class="fa fa-times"></i></button>
+                                        <button type="button" class="btn btn-danger remove-line"><i class="fa fa-times"></i></button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -94,28 +94,28 @@
                 tr.find('select').val('');
                 tr.appendTo($('.dynamic-table tbody'));
 
-                $('select').change(function(){
-                    if($(this).attr('id') == 'select' && $(this).val() == val('')){
-                        $('select').not(this).prop('disabled', true).val('Disabled');
-                    } else {
-                        $('select').not(this).removeProp('disabled');
-                    
-                        $('select option').removeProp('disabled');
-                        $('select').each(function(){
-                            var val = $(this).val();
-                            if(val != 'Default' || val != 'Disabled'){
-                                $('select option[value="'+val+'"]').not(this).prop('disabled', true);
-                            }
-                        });
-                    }
-                });
-
                 // $('select').change(function(){
-                //     if ($('select option[value="' + $(this).val() + '"]:selected').length > 1){
-                //         $(this).val(0);
-                //         alert('Service already availed! Please choose another.');
+                //     if($(this).attr('id') == 'select' && $(this).val() == val('')){
+                //         $('select').not(this).prop('disabled', true).val('Disabled');
+                //     } else {
+                //         $('select').not(this).removeProp('disabled');
+                    
+                //         $('select option').removeProp('disabled');
+                //         $('select').each(function(){
+                //             var val = $(this).val();
+                //             if(val != 'Default' || val != 'Disabled'){
+                //                 $('select option[value="'+val+'"]').not(this).prop('disabled', true);
+                //             }
+                //         });
                 //     }
                 // });
+
+                $('select').change(function(){
+                    if ($('select option[value="' + $(this).val() + '"]:selected').length > 1){
+                        $(this).val(0);
+                        alert('Service already availed! Please choose another.');
+                    }
+                });
             });
 
             $(document).on('click','.remove-line',function(e) {
