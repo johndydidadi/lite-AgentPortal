@@ -26,37 +26,32 @@ class AgentController extends CRUDController
                 'email' => 'required|unique:agents,email',
                 'password' => 'required',
                 'quota' => 'required',
+                'password' => 'required|min:8',
+                'quota' => 'required'
             ],
             'update' => [
-                'firstname' => 'required',
-                'middlename' => 'anullable',
+                'firstname' => 'required|alpha_spaces',
+                'middlename' => 'nullable',
                 'lastname' => 'required',
                 'address' => 'required',
                 'gender' => 'required',
                 'role' => 'nullable',
                 'birth_date' => 'required',
                 'contact_number' => 'required|numeric',
-                'email' => ['required', Rule::unique('agents', 'email')->ignore($request->route('agent'))],
+                'email' => ['required', Rule::unique('agents', 'email')->ignore($request->route('agent'))]
                 // 'password' => 'required|min:8|confirmed',
                 'quota' => 'required',
 
             ]
         ];
     }
-
-    public function beforeStore()
-    {
-        $this->validatedInput['quota'] = str_replace(',' , '', $this->validatedInput['quota']);
-        $this->validatedInput['password'] = bcrypt($this->validatedInput['password']);
-    }
-
     public function beforeUpdate()
     {
         $this->beforeStore();
     }
-
-    public function afterStore($model)
+    public function beforeStore()
     {
+<<<<<<< HEAD
     //     User::create([
     //         'firstname' => $this->validatedInput['firstname'],
     //         'middlename' => $this->validatedInput['middlename'],
@@ -69,4 +64,9 @@ class AgentController extends CRUDController
     //     ]);
     // }
 
+=======
+        $this->validatedInput['quota'] = str_replace(',' , '', $this->validatedInput['quota']);
+    }
+    
+>>>>>>> 6063d0e8ded496231b415ab8ab4f4f3e213c98ff
 }
