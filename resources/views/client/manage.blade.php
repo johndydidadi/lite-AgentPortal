@@ -6,11 +6,17 @@
 @endsection
 
 @section('content')
+@if(!$resourceData->id)
+{!! Form::open(['url' => Myhelper::resource('store'), 'method' => 'post']) !!}
+
+@else
+{!! Form::model($resourceData, ['url' => MyHelper::resource('update', ['id' => $resourceData->id]), 'method' => 'patch']) !!}
+@endif
     <div class="row">
         <div class="col-md-6">
             <div class="my-3 p-3 bg-white rounded box-shadow">
-                @if($resourceData->id)
-                    {!! Form::model($resourceData, ['url' => MyHelper::resource('update', ['id' => $resourceData->id]), 'method' => 'patch']) !!}
+                @if(!$resourceData->services->isEmpty())
+                    
                     {!! Form::inputGroup('text', 'Company', 'company') !!}
                     {!! Form::inputGroup('text', 'Representative', 'representative') !!}
                     {!! Form::inputGroup('text', 'Contact Number', 'contact_number') !!}
@@ -28,8 +34,7 @@
                                 @forelse($resourceData->services as $row)
 
                                     <tr>
-                                        {!! Form::hidden("services[$loop->index][id]", $row->id) !!}
-                                        <td>{!! Form::selectGroup(null, 'services[$loop->index][service]', $services,$row->id) !!}</td>
+                                        <td>{!! Form::selectGroup(null, "services[{$loop->index}][service_id]", $services, $row->id) !!}</td>
                                         <td>
                                             <button class="btn btn-danger remove-line"><i class="fa fa-times"></i></button>
                                         </td>
@@ -46,7 +51,6 @@
                             </tfoot>
                     </table>
                 @else
-                    {!! Form::open(['url' => Myhelper::resource('store'), 'method' => 'post']) !!}
                     {!! Form::inputGroup('text', 'Company', 'company') !!}
                     {!! Form::inputGroup('text', 'Representative', 'representative') !!}
                     {!! Form::inputGroup('text', 'Contact Number', 'contact_number') !!}
@@ -61,7 +65,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>{!! Form::selectGroup(null, 'services[]', $services) !!}</td>
+                                    <td>{!! Form::selectGroup(null, 'services[0][service_id]', $services, null, ['data-name' => 'services[idx][service_id]']) !!}</td>
                                     <td>
                                         <button type="button" class="btn btn-danger remove-line"><i class="fa fa-times"></i></button>
                                     </td>
@@ -91,24 +95,20 @@
 
             $('.add-line').click(function(){
                 var tr = $('.dynamic-table tbody tr:first').clone();
+
                 tr.find('select').val('');
                 tr.appendTo($('.dynamic-table tbody'));
 
-                // $('select').change(function(){
-                //     if($(this).attr('id') == 'select' && $(this).val() == val('')){
-                //         $('select').not(this).prop('disabled', true).val('Disabled');
-                //     } else {
-                //         $('select').not(this).removeProp('disabled');
-                    
-                //         $('select option').removeProp('disabled');
-                //         $('select').each(function(){
-                //             var val = $(this).val();
-                //             if(val != 'Default' || val != 'Disabled'){
-                //                 $('select option[value="'+val+'"]').not(this).prop('disabled', true);
-                //             }
-                //         });
-                //     }
-                // });
+                var count = $('.dynamic-table tbody tr').length;
+                $( "span" ).text( "There are " + count + " divs. Click to add more." );
+                
+                tr.find('select,input:not([type=hidden])')
+                .attr('name', function () {
+                        return $(this).data('name').replace('idx', count)
+                })
+                .val('');
+
+                
 
                 $('select').change(function(){
                     if ($('select option[value="' + $(this).val() + '"]:selected').length > 1){
@@ -116,6 +116,7 @@
                         alert('Service already availed! Please choose another.');
                     }
                 });
+        
             });
 
             $(document).on('click','.remove-line',function(e) {
@@ -129,6 +130,6 @@
 
         
 
-        });
+         });
     </script>
 @endsection

@@ -49,11 +49,11 @@
                                         
                                         </thead>
                                         <tbody>
-                                            @forelse( $row->services as $data )
-                                            <tr>
-                                                <td>{{ $data->service }}</td>
-                                                <td>{{ $data->payment_type }}</td>
-                                            </tr>
+                                            @forelse($row->services as $data )
+                                                <tr>
+                                                    <td>{{ $data->service }}</td>
+                                                    <td>{{ $data->payment_type }}</td>
+                                                </tr>
                                             @empty
                                             @endforelse
                                         </tbody>

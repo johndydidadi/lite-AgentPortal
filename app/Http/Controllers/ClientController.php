@@ -19,6 +19,7 @@ class ClientController extends CRUDController
                 'contact_number' => 'required',
                 'address' => 'required',
                 'nature_of_business' => 'required',
+                'services.*.service_id' => 'nullable'
             ],
             'update' => [
                 'company' => 'required',
@@ -26,6 +27,7 @@ class ClientController extends CRUDController
                 'contact_number' => 'required',
                 'address' => 'required',
                 'nature_of_business' => 'required',
+                'services.*.service_id' => 'nullable'
             ]    
         ];
     }
@@ -37,21 +39,27 @@ class ClientController extends CRUDController
 
     public function beforeUpdate()
     {
-        // $this->beforeStore();
+        
+    }
+     public function afterUpdate($model)
+    {
+        $model->services()->sync($this->validatedInput['services']);
+
     }
 
-    public function afterStore($client)
+    public function afterStore($model)
     {
-        $client->services()->attach(request()->services);
+        $client->services()->attach($this->validatedInput['services']);
     }
 
     public function beforeCreate()
     {   
-        $this->viewData['services'] = Service::pluck('service','id')->prepend('Select Services','');   
+        $this->viewData['services'] = Service::pluck('service', 'id')->prepend('Select Services','');   
     }
 
-     public function beforeEdit($client)
+     public function beforeEdit($model)
     {   
+        $this->viewData['services'] = $model->load('services');
         $this->beforeCreate();
     }
 
