@@ -6,8 +6,8 @@
                     Dashboard
                 </a>
                 @if(Auth::user()->role=='Agent')
-                    <a class="nav-link" href="#">
-                        Settings
+                    <a class="nav-link" href="{{ route('get:profile') }}">
+                        Profile
                     </a>
                 @endif
             </li>

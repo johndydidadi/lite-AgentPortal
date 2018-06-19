@@ -24,7 +24,7 @@ class AgentController extends CRUDController
                 'birth_date' => 'required',
                 'contact_number' => 'required|numeric',
                 'email' => 'required|unique:agents,email',
-                'password' => 'required|min:8',
+                'password' => 'required',
                 'quota' => 'required',
             ],
             'update' => [
@@ -37,7 +37,7 @@ class AgentController extends CRUDController
                 'birth_date' => 'required',
                 'contact_number' => 'required|numeric',
                 'email' => ['required', Rule::unique('agents', 'email')->ignore($request->route('agent'))],
-                'password' => 'required',
+                // 'password' => 'required|min:8|confirmed',
                 'quota' => 'required',
 
             ]
@@ -57,16 +57,16 @@ class AgentController extends CRUDController
 
     public function afterStore($model)
     {
-        User::create([
-            'firstname' => $this->validatedInput['firstname'],
-            'middlename' => $this->validatedInput['middlename'],
-            'lastname' => $this->validatedInput['lastname'],
-            'email' => $this->validatedInput['email'],
-            'role' => 'Agent',
-            'username' => $this->validatedInput['email'],
-            'password' => $this->validatedInput['password'],
+    //     User::create([
+    //         'firstname' => $this->validatedInput['firstname'],
+    //         'middlename' => $this->validatedInput['middlename'],
+    //         'lastname' => $this->validatedInput['lastname'],
+    //         'email' => $this->validatedInput['email'],
+    //         'role' => 'Agent',
+    //         'username' => $this->validatedInput['email'],
+    //         'password' => $this->validatedInput['password'],
 
-        ]);
-    }
+    //     ]);
+    // }
 
 }

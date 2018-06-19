@@ -21,7 +21,9 @@ Route::post('logout', 'Auth\CustomLogoutController@logout')->name('post:logout')
 
 Route::group(['middleware' => 'auth'], function() {
 	Route::get('/home', 'DashboardController@index')->name('get:dashboard:index');
-
+	Route::get('agentProfile', 'ChangePasswordController@showProfile')->name('get:profile');
+	Route::get('agentPassword', 'ChangePasswordController@showChangePass')->name('get:updatePass');
+	Route::patch('agentPassword', 'ChangePasswordController@doChangePassword')->name('post:doUpdate');
 	Route::resource('agents', 'AgentController');
 	Route::resource('clients', 'ClientController');
 	Route::resource('services', 'ServiceController');
