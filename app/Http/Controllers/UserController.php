@@ -20,11 +20,13 @@ class UserController extends CRUDController
             	'email' => 'required',
             	'role' => 'required',
             	'password' => 'required'
-            ],
-            'update' => [
-
-            ]    
+            ]
         ];
+    }
+
+    public function beforeStore()
+    {
+        $this->validatedInput['password'] = bcrypt($this->validatedInput['password']);
     }
      
 }

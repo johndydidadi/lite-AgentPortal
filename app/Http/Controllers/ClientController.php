@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Common\CRUDController;
 use App\Client;
 use App\Service;
+use App\ClientService;
 class ClientController extends CRUDController
 {
     public function __construct(Client $model, Request $request){
@@ -47,7 +48,7 @@ class ClientController extends CRUDController
 
     }
 
-    public function afterStore($model)
+    public function afterStore($client)
     {
         $client->services()->attach($this->validatedInput['services']);
     }
