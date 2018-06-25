@@ -22,7 +22,7 @@
                     {!! Form::inputGroup('text', 'Contact Number', 'contact_number') !!}
                     {!! Form::inputGroup('text', 'Address', 'address') !!}
                     {!! Form::inputGroup('text', 'Nature Of Business', 'nature_of_business') !!}
-                    <table class="table table-bordered dynamic-table" id="dynamic_field">
+                    <table class="table table-bordered dynamic" id="dynamic_field">
                             <thead>
                                 <tr>
                                     <th>Service</th>
@@ -34,7 +34,7 @@
                                 @forelse($resourceData->services as $row)
 
                                     <tr>
-                                        <td>{!! Form::selectGroup(null, "services[{$loop->index}][service_id]", $services, $row->id) !!}</td>
+                                        <td>{!! Form::selectGroup(null, "services[{$loop->index}][service_id]", $services, $row->id, ['data-name' => 'services[idx][service_id]']) !!}</td>
                                         <td>
                                             <button class="btn btn-danger remove-line"><i class="fa fa-times"></i></button>
                                         </td>
@@ -56,7 +56,7 @@
                     {!! Form::inputGroup('text', 'Contact Number', 'contact_number') !!}
                     {!! Form::inputGroup('text', 'Address', 'address') !!}
                     {!! Form::inputGroup('text', 'Nature Of Business', 'nature_of_business') !!}
-                    <table class="table table-bordered dynamic-table" id="dynamic_field">
+                    <table class="table table-bordered dynamic" id="dynamic_field">
                             <thead>
                                 <tr>
                                     <th>Service</th>
@@ -93,30 +93,40 @@
     <script>
         $(document).ready(function(){
 
-            $('.add-line').click(function(){
-                var tr = $('.dynamic-table tbody tr:first').clone();
+            // $('.add-line').click(function(){
+            //     var tr = $('.dynamic-table tbody tr:first').clone();
 
-                tr.find('select').val('');
-                tr.appendTo($('.dynamic-table tbody'));
+            //     tr.find('select').val('');
+            //     tr.appendTo($('.dynamic-table tbody'));
 
-                var count = $('.dynamic-table tbody tr').length;
-                $( "span" ).text( "There are " + count + " divs. Click to add more." );
-                
-                tr.find('select,input:not([type=hidden])')
-                .attr('name', function () {
-                        return $(this).data('name').replace('idx', count)
-                })
-                .val('');
+            //     var count = $('.dynamic-table tbody tr').length;
+                   
+            //         tr.find('select')
+            //             .attr('name', function () {
+            //         return $(this).data('name').replace('idx', count)
+            //         });
 
-                
+            //     $('select').change(function(){
+            //         if ($('select option[value="' + $(this).val() + '"]:selected').length > 1){
+            //             $(this).val(0);
+            //             alert('Service already availed! Please choose another.');
+            //         }
 
-                $('select').change(function(){
-                    if ($('select option[value="' + $(this).val() + '"]:selected').length > 1){
-                        $(this).val(0);
-                        alert('Service already availed! Please choose another.');
-                    }
-                });
-        
+                    
+
+            //     });
+            
+            // });
+            $('.add-line').click(function () {
+                var table = $(this).closest('table.dynamic'),
+                    clone = table.find('tbody tr:first').clone();
+                clone.find('select,input:not([type=hidden])')
+                    .attr('name', function () {
+                        return $(this).data('name').replace('idx', table.find('tbody tr').length)
+                    })
+                    .val('');
+
+                clone.appendTo(table.find('tbody'))
             });
 
             $(document).on('click','.remove-line',function(e) {

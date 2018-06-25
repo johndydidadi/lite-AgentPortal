@@ -38,9 +38,9 @@ class AgentController extends CRUDController
                 'role' => 'nullable',
                 'birth_date' => 'required',
                 'contact_number' => 'required|numeric',
-                'email' => ['required', Rule::unique('agents', 'email')->ignore($request->route('agent'))]
+                'email' => ['required', Rule::unique('agents', 'email')->ignore($request->route('agent'))],
                 // 'password' => 'required|min:8|confirmed',
-                'quota' => 'required',
+                'quota' => 'required'
 
             ]
         ];
@@ -51,7 +51,6 @@ class AgentController extends CRUDController
     }
     public function beforeStore()
     {
-<<<<<<< HEAD
     //     User::create([
     //         'firstname' => $this->validatedInput['firstname'],
     //         'middlename' => $this->validatedInput['middlename'],
@@ -64,9 +63,8 @@ class AgentController extends CRUDController
     //     ]);
     // }
 
-=======
         $this->validatedInput['quota'] = str_replace(',' , '', $this->validatedInput['quota']);
     }
     
->>>>>>> 6063d0e8ded496231b415ab8ab4f4f3e213c98ff
+
 }
