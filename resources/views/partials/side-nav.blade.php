@@ -2,7 +2,7 @@
     <div class="sidebar-sticky">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{route('get:dashboard:index')}}">
                     Dashboard
                 </a>
                 @if(Auth::user()->role=='Agent')

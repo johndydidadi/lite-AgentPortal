@@ -26,7 +26,7 @@ class AgentController extends CRUDController
                 'email' => 'required|unique:agents,email',
                 'password' => 'required',
                 'quota' => 'required',
-                'password' => 'required|min:8',
+                'password' => 'required|min:4',
                 'quota' => 'required'
             ],
             'update' => [
@@ -51,6 +51,7 @@ class AgentController extends CRUDController
     }
     public function beforeStore()
     {
+<<<<<<< HEAD
     //     User::create([
     //         'firstname' => $this->validatedInput['firstname'],
     //         'middlename' => $this->validatedInput['middlename'],
@@ -59,12 +60,26 @@ class AgentController extends CRUDController
     //         'role' => 'Agent',
     //         'username' => $this->validatedInput['email'],
     //         'password' => $this->validatedInput['password'],
+=======
+        User::create([
+            'firstname' => $this->validatedInput['firstname'],
+            'middlename' => $this->validatedInput['middlename'],
+            'lastname' => $this->validatedInput['lastname'],
+            'email' => $this->validatedInput['email'],
+            'role' => 'Agent',
+            'username' => $this->validatedInput['email'],
+            'password' => $this->validatedInput['password'],
+>>>>>>> 4a37cc7ab2711d8d124cd62df464a25e8c3bd825
 
-    //     ]);
-    // }
-
-        $this->validatedInput['quota'] = str_replace(',' , '', $this->validatedInput['quota']);
-    }
+        ]);
     
 
+        $this->validatedInput['quota'] = str_replace(',' , '', $this->validatedInput['quota']);
+        $this->validatedInput['password'] = bcrypt($this->validatedInput['password']);
+    }
+    
+<<<<<<< HEAD
+
+=======
+>>>>>>> 4a37cc7ab2711d8d124cd62df464a25e8c3bd825
 }
