@@ -48,7 +48,7 @@ class ClientController extends CRUDController
 
     }
 
-    public function afterStore($client)
+    public function afterStore($model)
     {
         $model->services()->attach($this->validatedInput['services']);
     }
