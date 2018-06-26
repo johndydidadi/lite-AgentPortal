@@ -33,15 +33,6 @@ class ClientController extends CRUDController
         ];
     }
 
-    public function beforeStore()
-    {
-        // dd(request()->all());
-    }
-
-    public function beforeUpdate()
-    {
-        
-    }
      public function afterUpdate($model)
     {
         $model->services()->sync($this->validatedInput['services']);
