@@ -22,7 +22,7 @@
                     {!! Form::inputGroup('text', 'Contact Number', 'contact_number') !!}
                     {!! Form::inputGroup('text', 'Address', 'address') !!}
                     {!! Form::inputGroup('text', 'Nature Of Business', 'nature_of_business') !!}
-                    <table class="table table-bordered dynamic" id="dynamic_field">
+                    <table class="table table-bordered dynamic" id="dynamic">
                             <thead>
                                 <tr>
                                     <th>Service</th>
