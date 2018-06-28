@@ -28,12 +28,7 @@
                     <a class="nav-link" href="{{ route('users.index') }}">
                         Users
                     </a>
-                    <a class="nav-link" href="{{ route('admins.index') }}">
-                        Admin
-                    </a>
-                    <a class="nav-link" href="{{ route('agents.index') }}">
-                        Agents
-                    </a>
+                    
                 @endif
                 <a class="nav-link" href="{{ route('clients.index') }}">
                     Clients

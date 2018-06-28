@@ -2,6 +2,7 @@
 
 @section('header')
 	<h1 class="h2">Users</h1>
+    <a class="btn btn-success btn-sm" href="{{ MyHelper::resource('create') }}"><i class="fas fa-plus"></i> New User</a>
 @endsection
 
 @section('content')
@@ -9,7 +10,7 @@
         <table class="table table-sm">
             <thead>
             <tr>
-                <th scope="col">Fullname</th>
+                <th scope="col">Name</th>
                 <th scope="col">Username</th>
                 <th scope="col">Role</th>
             </tr>
@@ -17,7 +18,7 @@
             <tbody>
             	@forelse($resourceList as $row)
             		<tr>
-                        <td scope="row">{{$row->user->fullname}}</td>
+                        <td scope="row">{{$row->fullname}}</td>
             			<td scope="row">{{$row->username}}</td>
             			<td scope="row">{{$row->role}}</td>
             		</tr>

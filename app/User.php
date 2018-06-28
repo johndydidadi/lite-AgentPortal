@@ -47,10 +47,12 @@ class User extends Authenticatable
     // {
     //     return $this->belongsTo(Agent::class, 'agent_id');
     // }
-
+    
     public function getFullnameAttribute()
     {
-       return "{$this->firstname} {$this->middlename[0]} {$this->lastname}";
+       // return "{$this->firstname} {$this->middlename[0]} {$this->lastname}";
+
+        return ucfirst($this->firstname) . ' ' . ucfirst($this->middlename) . ' ' . ucfirst($this->lastname);
     }
 
     public function setPasswordAttribute($value)
