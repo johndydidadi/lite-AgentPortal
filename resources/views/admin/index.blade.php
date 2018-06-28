@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('header')
-    <h1 class="h2">Agent</h1>
-    <a class="btn btn-success btn-sm" href="{{ MyHelper::resource('create') }}"><i class="fas fa-plus"></i> New Agent</a>
+    <h1 class="h2">Admin</h1>
+    <a class="btn btn-success btn-sm" href="{{ MyHelper::resource('create') }}"><i class="fas fa-plus"></i> New Admin</a>
 @endsection
 
 @section('content')

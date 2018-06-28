@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Common\CRUDController;
 use Illuminate\Validation\Rule;
-use App\Agent;
+use App\Admin;
 use App\User;
-class AgentController extends CRUDController
+class AdminController extends CRUDController
 {
-    public function __construct(Agent $model, Request $request){
+    public function __construct(Admin $model, Request $request){
         parent::__construct();
 
         $this->resourceModel = $model;
@@ -20,10 +20,10 @@ class AgentController extends CRUDController
                 'lastname' => 'required',
                 'address' => 'required',
                 'gender' => 'required',
-                'role' => 'nullable',
                 'birth_date' => 'required',
                 'contact_number' => 'required|numeric',
-                'email' => 'required|unique:agents,email',
+                'email' => 'required|unique:admins,email',
+                'quota' => 'required',
                 'password' => 'required|min:8',
                 'quota' => 'required'
             ],
@@ -36,8 +36,7 @@ class AgentController extends CRUDController
                 'role' => 'nullable',
                 'birth_date' => 'required',
                 'contact_number' => 'required|numeric',
-                'email' => ['required', Rule::unique('agents', 'email')->ignore($request->route('agent'))],
-                'password' => 'min:8|confirmed',
+                'email' => ['required', Rule::unique('admins', 'email')->ignore($request->route('admin'))],
                 'quota' => 'required'
 
             ]
@@ -49,22 +48,18 @@ class AgentController extends CRUDController
         $this->beforeStore();
     }
 
-    public function beforeStore()
+    public function afterStore($model)
     {
-        
-        User::create([
-                'firstname' => $this->validatedInput['firstname'],
-                'middlename' => $this->validatedInput['middlename'],
-                'lastname' => $this->validatedInput['lastname'],
-                'email' => $this->validatedInput['email'],
-                'role' => 'Agent',
-                'username' => $this->validatedInput['email'],
-                'password'=> $this->validatedInput['password']              
+        $model->user()->create([
+            'username' => $this->validatedInput['email'],
+            'password' => $this->validatedInput['password'],
+            'role' => 'Admin'
         ]);
-
-        $this->validatedInput['password'] = bcrypt($this->validatedInput['password']);
-        $this->validatedInput['quota'] = str_replace(',' , '', $this->validatedInput['quota']);
     }
 
+    public function beforeStore()
+    {
+        $this->validatedInput['quota'] = str_replace(',' , '', $this->validatedInput['quota']);
+    }
          
 }

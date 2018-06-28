@@ -10,14 +10,23 @@ use Illuminate\Http\Request;
 class ChangePasswordController extends Controller
 {
     public function showProfile(){
-
-    	return view('agent.profile');
-
+        
+        if(Auth::user()->role=='Admin'){
+            return view('admin.profile');
+        }else{
+            return view('agent.profile');
+        }    
+    	   
     }
 
     public function showChangePass(){
 
-        return view('agent.changepass');
+        if(Auth::user()->role=='Admin'){
+            return view('admin.changepass');
+        }else{
+            return view('agent.changepass');
+        }          
+       
     }
 
     public function doChangePassword(Request $request){

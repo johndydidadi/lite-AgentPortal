@@ -5,7 +5,11 @@
                 <a class="nav-link" href="{{route('get:dashboard:index')}}">
                     Dashboard
                 </a>
-                @if(Auth::user()->role=='Agent')
+                @if(Auth::user()->role=='Admin')
+                    <a class="nav-link" href="{{ route('get:profile') }}">
+                        Profile
+                    </a>
+                @else
                     <a class="nav-link" href="{{ route('get:profile') }}">
                         Profile
                     </a>
@@ -23,6 +27,9 @@
                 @if(Auth::user()->role == 'Admin')
                     <a class="nav-link" href="{{ route('users.index') }}">
                         Users
+                    </a>
+                    <a class="nav-link" href="{{ route('admins.index') }}">
+                        Admin
                     </a>
                     <a class="nav-link" href="{{ route('agents.index') }}">
                         Agents
