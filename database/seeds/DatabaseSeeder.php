@@ -1,5 +1,5 @@
 <?php
-
+use App\Admin;
 use App\User;
 use Illuminate\Database\Seeder;
 
@@ -12,10 +12,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        Admin::create([
+            'firstname' => 'admin',
+            'middlename' => 'admin',
+            'lastname' => 'admin',
+            'address' => 'admin',
+            'gender' => 'Male',
+            'birth_date' => '2018-06-13',
+            'contact_number' => '12345678',
+            'email' => 'admin@gmail.com',
+            'quota' => '11111'
+        ]);
         User::create([
-            'firstname' => 'johndy',
-            'lastname' =>'punay',
-            'email' => 'johndy_punay@gmail.com',
+            'admin_id' => '1',
+            'agent_id' => null,
             'username' => 'admin',
             'password' => 'admin',
             'role' => 'Admin'

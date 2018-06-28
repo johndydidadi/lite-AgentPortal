@@ -13,11 +13,11 @@
                 <form class="form-group">
                     <div class="form-group row">
                         <label class="col-sm-2 col-xs-4"><b>Name</b></label>
-                        <p class="col-sm-4 col-xs-8">{{ Auth::user()->agent->fullname }}</p>
+                        <p class="col-sm-4 col-xs-8">{{ Auth::user()->admin->fullname }}</p>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-2 col-xs-4"><b>Email</b></label>
-                        <p class="col-sm-4 col-xs-8">{{ Auth::user()->agent->email }}</p>
+                        <p class="col-sm-4 col-xs-8">{{ Auth::user()->admin->email }}</p>
                     </div>                    
                 </form>
 

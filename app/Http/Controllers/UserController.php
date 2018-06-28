@@ -14,8 +14,6 @@ class UserController extends CRUDController
     	$this->resourceModel=$model;
     	$this->validationRules = [
             'store' => [
-            	'firstname' => 'required',
-            	'lastname' => 'required',
             	'username' => 'required',
             	'email' => 'required',
             	'role' => 'required',

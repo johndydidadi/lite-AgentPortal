@@ -106,11 +106,11 @@
             //         return $(this).data('name').replace('idx', count)
             //         });
 
-            //     $('select').change(function(){
-            //         if ($('select option[value="' + $(this).val() + '"]:selected').length > 1){
-            //             $(this).val(0);
-            //             alert('Service already availed! Please choose another.');
-            //         }
+                // $('select').change(function(){
+                //     if ($('select option[value="' + $(this).val() + '"]:selected').length > 1){
+                //         $(this).val(0);
+                //         alert('Service already availed! Please choose another.');
+                //     }
 
                     
 
@@ -120,14 +120,14 @@
             $('.add-line').click(function () {
                 var table = $(this).closest('table.dynamic'),
                     clone = table.find('tbody tr:first').clone();
-                clone.find('select,input:not([type=hidden])')
-                    .attr('name', function () {
+                    clone.find('select,input:not([type=hidden])')
+                    .attr('name', function () { 
                         return $(this).data('name').replace('idx', table.find('tbody tr').length)
-                    })
-                    .val('');
-
-                clone.appendTo(table.find('tbody'))
+                    }).val('');
+                    clone.appendTo(table.find('tbody'));
+                    
             });
+
 
             $(document).on('click','.remove-line',function(e) {
                 e.preventDefault();

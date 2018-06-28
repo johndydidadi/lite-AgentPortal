@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('header')
-    <h1 class="h2">{{ $resourceData->id ? "Edit: $resourceData->name" : 'New Agent' }}</h1>
+    <h1 class="h2">{{ $resourceData->id ? "Edit: $resourceData->name" : 'New Admin' }}</h1>
     <a class="btn btn-danger btn-sm" href="{{ MyHelper::resource('index') }}"><i class="fas fa-arrow-left "></i> Back to list</a>
 @endsection
 
@@ -24,7 +24,7 @@
                 {!! Form::inputGroup('hidden', null, 'password')!!}
                 {!! Form::inputGroup('text', 'Quota', 'quota', $resourceData->quota ?? 0.00 , ['class'=> 'price']) !!}
                 {!! Form::inputGroup('hidden', null, 'id' , $resourceData->id)!!}
-
+                
                 @else
                     {!! Form::open(['url' => Myhelper::resource('store'), 'method' => 'post']) !!}
 

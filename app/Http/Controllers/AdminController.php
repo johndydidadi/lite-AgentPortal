@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Common\CRUDController;
 use Illuminate\Validation\Rule;
-use App\Agent;
+use App\Admin;
 use App\User;
-class AgentController extends CRUDController
+class AdminController extends CRUDController
 {
-    public function __construct(Agent $model, Request $request){
+    public function __construct(Admin $model, Request $request){
         parent::__construct();
 
         $this->resourceModel = $model;
@@ -22,7 +22,7 @@ class AgentController extends CRUDController
                 'gender' => 'required',
                 'birth_date' => 'required',
                 'contact_number' => 'required|numeric',
-                'email' => 'required|unique:agents,email',
+                'email' => 'required|unique:admins,email',
                 'password' => 'required|min:8',
                 'quota' => 'required'
             ],
@@ -35,43 +35,30 @@ class AgentController extends CRUDController
                 'role' => 'nullable',
                 'birth_date' => 'required',
                 'contact_number' => 'required|numeric',
-                'email' => ['required', Rule::unique('agents', 'email')->ignore($request->route('agent'))],
-                'password' => 'min:8|confirmed',
+                'email' => ['required', Rule::unique('admins', 'email')->ignore($request->route('admin'))],
                 'quota' => 'required'
 
             ]
         ];
     }
 
-
-    public function beforeStore()
-    {
-        $this->validatedInput['quota'] = str_replace(',', '', $this->validatedInput['quota']);
-        $this->validatedInput['password'] = bcrypt($this->validatedInput['password']);
-    }
-
-
     public function beforeUpdate()
     {
         $this->beforeStore();
     }
-   
-    
-    
-
 
     public function afterStore($model)
     {
         $model->user()->create([
             'username' => $this->validatedInput['email'],
             'password' => $this->validatedInput['password'],
-            'role' => 'Agent'
+            'role' => 'Admin'
         ]);
     }
 
-    // public function beforeStore()
-    // {
-    //     $this->validatedInput['quota'] = str_replace(',' , '', $this->validatedInput['quota']);
-    // }
-        
+    public function beforeStore()
+    {
+        $this->validatedInput['quota'] = str_replace(',' , '', $this->validatedInput['quota']);
+    }
+         
 }

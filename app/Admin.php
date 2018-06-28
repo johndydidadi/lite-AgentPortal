@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Common\HRISModel;
 
-class Agent extends HRISModel
+class Admin extends HRISModel
 {
     protected $fillable = [
         'firstname',
@@ -30,6 +30,6 @@ class Agent extends HRISModel
 
     public function user()
     {
-        return $this->hasOne(User::class, 'agent_id');
+        return $this->hasOne(User::class, 'admin_id');
     }
 }
