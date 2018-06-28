@@ -23,7 +23,6 @@ class AdminController extends CRUDController
                 'birth_date' => 'required',
                 'contact_number' => 'required|numeric',
                 'email' => 'required|unique:admins,email',
-                'quota' => 'required',
                 'password' => 'required|min:8',
                 'quota' => 'required'
             ],

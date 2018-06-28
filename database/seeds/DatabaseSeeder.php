@@ -24,7 +24,8 @@ class DatabaseSeeder extends Seeder
             'quota' => '11111'
         ]);
         User::create([
-            'user_id' => '1',
+            'admin_id' => '1',
+            'agent_id' => null,
             'username' => 'admin',
             'password' => 'admin',
             'role' => 'Admin'

@@ -25,7 +25,6 @@
                 {!! Form::inputGroup('text', 'Quota', 'quota', $resourceData->quota ?? 0.00 , ['class'=> 'price']) !!}
                 {!! Form::inputGroup('hidden', null, 'id' , $resourceData->id)!!}
                 
-
                 @else
                     {!! Form::open(['url' => Myhelper::resource('store'), 'method' => 'post']) !!}
 

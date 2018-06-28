@@ -16,7 +16,20 @@ class Agent extends HRISModel
         'birth_date',
         'contact_number',
         'email',
-        'password',
         'quota'
     ];
+
+    protected $appends = [
+        'fullname'
+    ];
+    
+    public function getFullnameAttribute()
+    {
+       return "{$this->firstname} {$this->middlename[0]} {$this->lastname}";
+    }
+
+    public function user()
+    {
+        return $this->hasOne(User::class, 'agent_id');
+    }
 }

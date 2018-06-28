@@ -12,7 +12,8 @@ class User extends Authenticatable
     use softDeletes;
 
     protected $fillable = [
-        'user_id',
+        'admin_id',
+        'agent_id',
         'role',
         'username',
         'password',
@@ -30,7 +31,11 @@ class User extends Authenticatable
 
     public function admin()
     {
-        return $this->belongsTo(Admin::class, 'user_id');
+        return $this->belongsTo(Admin::class, 'admin_id');
+    }
+    public function agent()
+    {
+        return $this->belongsTo(Agent::class, 'agent_id');
     }
 
     public function setPasswordAttribute($value)

@@ -24,7 +24,6 @@ class CreateAgentsTable extends Migration
             $table->date('birth_date');
             $table->string('contact_number');
             $table->string('email');
-            $table->string('password');
             $table->decimal('quota', 13, 2);
             $table->timestamps();
             $table->softDeletes();

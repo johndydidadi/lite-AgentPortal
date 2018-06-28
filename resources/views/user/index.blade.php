@@ -18,7 +18,7 @@
             <tbody>
             	@forelse($resourceList as $row)
             		<tr>
-            			<td scope="row">{{$row->admin->fullname}}</td>
+            			<td scope="row">{{$row->user->fullname}}</td>
             			<td scope="row">{{$row->admin->email}}</td>
             			<td scope="row">{{$row->username}}</td>
             			<td scope="row">{{$row->role}}</td>

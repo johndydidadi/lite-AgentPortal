@@ -15,7 +15,8 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('user_id'); 
+            $table->unsignedInteger('admin_id')->nullable(); 
+            $table->unsignedInteger('agent_id')->nullable();
             $table->string('username');
             $table->string('password');
             $table->enum('role' , ['Admin', 'Agent']);
@@ -23,7 +24,8 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('user_id')->references('id')->on('admins')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('admin_id')->references('id')->on('admins')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('agent_id')->references('id')->on('agents')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

@@ -30,6 +30,6 @@ class Admin extends HRISModel
 
     public function user()
     {
-        return $this->hasOne(User::class, 'user_id');
+        return $this->hasOne(User::class, 'admin_id');
     }
 }

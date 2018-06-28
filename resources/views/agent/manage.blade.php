@@ -21,7 +21,9 @@
                 {!! Form::inputGroup('date', 'Birth Date', 'birth_date') !!}
                 {!! Form::inputGroup('text', 'Contact Number', 'contact_number') !!}
                 {!! Form::inputGroup('email', 'Email', 'email') !!}
+                {!! Form::inputGroup('hidden', null, 'password')!!}
                 {!! Form::inputGroup('text', 'Quota', 'quota', $resourceData->quota ?? 0.00 , ['class'=> 'price']) !!}
+                {!! Form::inputGroup('hidden', null, 'id' , $resourceData->id)!!}
 
                 @else
                     {!! Form::open(['url' => Myhelper::resource('store'), 'method' => 'post']) !!}
