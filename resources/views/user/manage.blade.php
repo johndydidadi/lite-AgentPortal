@@ -22,7 +22,6 @@
                 {!! Form::inputGroup('email', 'Email', 'email') !!}
                 {!! Form::inputGroup('hidden', null, 'password')!!}
                 {!! Form::inputGroup('text', 'Quota', 'quota', $resourceData->quota ?? 0.00 , ['class'=> 'price']) !!}
-                {!! Form::inputGroup('hidden', null, 'id' , $resourceData->id)!!}
                 
                 @else
                     {!! Form::open(['url' => Myhelper::resource('store'), 'method' => 'post']) !!}
@@ -34,10 +33,15 @@
                 {!! Form::selectGroup('Gender', 'gender', ['' => 'Select type', 'Male' => 'Male', 'Female' => 'Female']) !!}
                 {!! Form::inputGroup('date', 'Birth Date', 'birth_date') !!}
                 {!! Form::inputGroup('text', 'Contact Number', 'contact_number') !!}
-                {!! Form::selectGroup('Role','role', ['' => 'Select Type', 'Admin' => 'Admin', 'Agent' => 'Agent'])!!}
                 {!! Form::inputGroup('email', 'Email', 'email') !!}
+                {!! Form::selectGroup('Role','role',['' => 'Select Type', 'admin' => 'Admin', 'agent' => 'Agent'], null, ['class' => 'role', 'id' => 'role']) !!}
+                 {!! Form::inputGroup('text', 'Quota', 'quota', $resourceData->quota ?? 0.00 , ['class'=> 'price']) !!}
+                <br>
+                <hr>
+                <br>
+                {!! Form::inputGroup('username', 'Username', 'username')!!}
                 {!! Form::inputGroup('password', 'Password', 'password')!!}
-                {!! Form::inputGroup('text', 'Quota', 'quota', $resourceData->quota ?? 0.00 , ['class'=> 'price']) !!}
+               
                 @endif
 
                 <hr>

@@ -22,10 +22,11 @@ class UserController extends CRUDController
                 'gender' => 'required',
                 'birth_date' => 'required',
                 'contact_number' => 'required|numeric',
-                'email' => 'required|unique:admins,email',
+                'email' => 'required|unique:users,email',
+                'username' => 'required',
                 'password' => 'required|min:8',
-                'role' => 'required|unique:users,user',
-                'quota' => 'required'
+                'role' => 'required',
+                'quota' => 'nullable'
             ],
             'update' => [
                 'firstname' => 'required|alpha_spaces',
@@ -39,7 +40,7 @@ class UserController extends CRUDController
                 'birth_date' => 'required',
                 'contact_number' => 'required|numeric',
                 'email' => ['required', Rule::unique('users', 'email')->ignore($request->route('user'))],
-                'quota' => 'required'
+                'quota' => 'nullable'
             ]
         ];
 
@@ -48,7 +49,6 @@ class UserController extends CRUDController
     public function beforeStore()
     {
         $this->validatedInput['password'] = bcrypt($this->validatedInput['password']);
-        // $this->validatedInput['quota'] = str_replace(',' , '', $this->validatedInput['quota']);
 
         if(request()->role == 'Admin')
         {

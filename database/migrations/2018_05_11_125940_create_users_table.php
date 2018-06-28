@@ -22,12 +22,12 @@ class CreateUsersTable extends Migration
             $table->string('email');
             $table->string('username');
             $table->string('password');
-            //change to $table->string('name');
             $table->string('address');
             $table->enum('gender' , ['Male', 'Female']);
             $table->date('birth_date');
             $table->string('contact_number');
-            $table->decimal('quota', 13, 2);
+            $table->decimal('quota', 13, 2)->default(0);
+
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
