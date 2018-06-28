@@ -95,6 +95,14 @@
 			}
 		});
 
+		$('.role').change(function(){
+			if($(this).val() == 'Admin'){
+				$('#quota').attr('disabled', false);
+			} else {
+				$('#quota').val('0.00');
+			}
+		});
+
 	</script>
 	</body>
 </html>
