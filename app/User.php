@@ -12,12 +12,18 @@ class User extends Authenticatable
     use softDeletes;
 
     protected $fillable = [
-        'admin_id',
-        'agent_id',
+        'firstname',
+        'middlename',
+        'lastname',
         'role',
+        'address',
+        'gender',
+        'birth_date',
+        'contact_number',
+        'email',
         'username',
         'password',
-        'email'
+        'quota'
     ];
 
     protected $hidden = [
@@ -27,15 +33,24 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    protected $appends = [
+        'fullname'
+    ];
+
     
 
-    public function admin()
+    // public function admin()
+    // {
+    //     return $this->belongsTo(Admin::class, 'admin_id');
+    // }
+    // public function agent()
+    // {
+    //     return $this->belongsTo(Agent::class, 'agent_id');
+    // }
+
+     public function getFullnameAttribute()
     {
-        return $this->belongsTo(Admin::class, 'admin_id');
-    }
-    public function agent()
-    {
-        return $this->belongsTo(Agent::class, 'agent_id');
+       return "{$this->firstname} {$this->middlename[0]} {$this->lastname}";
     }
 
     public function setPasswordAttribute($value)

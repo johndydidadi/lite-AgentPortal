@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Admin::create([
+        User::create([
             'firstname' => 'admin',
             'middlename' => 'admin',
             'lastname' => 'admin',
@@ -21,11 +21,7 @@ class DatabaseSeeder extends Seeder
             'birth_date' => '2018-06-13',
             'contact_number' => '12345678',
             'email' => 'admin@gmail.com',
-            'quota' => '11111'
-        ]);
-        User::create([
-            'admin_id' => '1',
-            'agent_id' => null,
+            'quota' => '1',
             'username' => 'admin',
             'password' => 'admin',
             'role' => 'Admin'

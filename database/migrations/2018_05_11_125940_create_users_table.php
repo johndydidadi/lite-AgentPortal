@@ -15,17 +15,22 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('admin_id')->nullable(); 
-            $table->unsignedInteger('agent_id')->nullable();
+            $table->string('firstname');
+            $table->string('middlename')->nullable();
+            $table->string('lastname');
+            $table->enum('role' , ['Admin', 'Agent']);
+            $table->string('email');
             $table->string('username');
             $table->string('password');
-            $table->enum('role' , ['Admin', 'Agent']);
+            //change to $table->string('name');
+            $table->string('address');
+            $table->enum('gender' , ['Male', 'Female']);
+            $table->date('birth_date');
+            $table->string('contact_number');
+            $table->decimal('quota', 13, 2);
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
-
-            $table->foreign('admin_id')->references('id')->on('admins')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('agent_id')->references('id')->on('agents')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
