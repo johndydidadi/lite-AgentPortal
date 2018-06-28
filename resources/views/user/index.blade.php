@@ -9,6 +9,7 @@
         <table class="table table-sm">
             <thead>
             <tr>
+                <th scope="col">Fullname</th>
                 <th scope="col">Username</th>
                 <th scope="col">Role</th>
             </tr>
@@ -16,6 +17,7 @@
             <tbody>
             	@forelse($resourceList as $row)
             		<tr>
+                        <td scope="row">{{$row->user->fullname}}</td>
             			<td scope="row">{{$row->username}}</td>
             			<td scope="row">{{$row->role}}</td>
             		</tr>

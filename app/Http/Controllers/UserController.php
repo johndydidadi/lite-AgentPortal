@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Common\CRUDController;
 use App\User;
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 
 class UserController extends CRUDController
@@ -34,7 +35,7 @@ class UserController extends CRUDController
                 'role' => 'nullable',
                 'birth_date' => 'required',
                 'contact_number' => 'required|numeric',
-                'email' => ['required', Rule::unique('user', 'email')->ignore($request->route('admin'))],
+                'email' => ['required', Rule::unique('users', 'email')->ignore($request->route('user'))],
                 'quota' => 'required'
             ]
         ];
