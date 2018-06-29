@@ -106,17 +106,18 @@
             //         return $(this).data('name').replace('idx', count)
             //         });
 
-                // $('select').change(function(){
-                //     if ($('select option[value="' + $(this).val() + '"]:selected').length > 1){
-                //         $(this).val(0);
-                //         alert('Service already availed! Please choose another.');
-                //     }
-
+            //     $('select').change(function(){
+            //         if ($('select option[value="' + $(this).val() + '"]:selected').length > 1){
+            //             $(this).val(0);
+            //             alert('Service already availed! Please choose another.');
+            //         }
+            //     }
                     
 
             //     });
             
             // });
+
             $('.add-line').click(function () {
                 var table = $(this).closest('table.dynamic'),
                     clone = table.find('tbody tr:first').clone();
@@ -125,13 +126,20 @@
                         return $(this).data('name').replace('idx', table.find('tbody tr').length)
                     }).val('');
                     clone.appendTo(table.find('tbody'));
-                    
+
+
+                $('select').change(function(){
+                    if ($('select option[value="' + $(this).val() + '"]:selected').length > 1){
+                        $(this).val(0);
+                        alert('Service already availed! Please choose another.');
+                    }
+                });
             });
 
 
             $(document).on('click','.remove-line',function(e) {
                 e.preventDefault();
-                if ($('.dynamic-table tbody tr').length != 1) {
+                if ($('.dynamic tbody tr').length != 1) {
                      $(this).closest('tr').remove();
                 } else {
                     $(this).closest('tr').find('select').val('');

@@ -20,7 +20,7 @@ class ClientController extends CRUDController
                 'contact_number' => 'required',
                 'address' => 'required',
                 'nature_of_business' => 'required',
-                'services.*.service_id' => 'nullable'
+                'services.*.service_id' => 'nullable|distinct'
             ],
             'update' => [
                 'company' => 'required',
@@ -28,20 +28,21 @@ class ClientController extends CRUDController
                 'contact_number' => 'required',
                 'address' => 'required',
                 'nature_of_business' => 'required',
-                'services.*.service_id' => 'nullable'
+                'services.*.service_id' => 'nullable|distinct'
             ]    
         ];
     }
 
      public function afterUpdate($model)
     {
-        $model->services()->sync($this->validatedInput['services']);
-
+        $servicesId = array_column($this->validatedInput['services'], 'service_id');
+        $model->services()->sync($servicesId);
     }
 
     public function afterStore($model)
     {
-        $model->services()->attach($this->validatedInput['services']);
+        $servicesId = array_column($this->validatedInput['services'], 'service_id');
+        $model->services()->attach($servicesId);
     }
 
     public function beforeCreate()

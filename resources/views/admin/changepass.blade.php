@@ -8,7 +8,7 @@
 	<div class="row">
 		<div class="col-md-6">
 			<div class="my-3 p-3 bg-white rounded box-shadow">
-				{!! Form::open([s'url' => route('post:doUpdate'), 'method' => 'patch']) !!}
+				{!! Form::open(['url' => route('post:doUpdate'), 'method' => 'patch']) !!}
 					{!! Form::inputGroup('password', 'Old Password', 'old_password') !!}
 
 					{!! Form::inputGroup('password', 'New Password', 'new_password') !!}

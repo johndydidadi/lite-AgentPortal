@@ -6,27 +6,23 @@
 @endsection
 
 @section('content')
+@json($errors->all())
     <div class="row">
         <div class="col-md-6">
             <div class="my-3 p-3 bg-white rounded box-shadow">
                 @if($resourceData->id)
                     {!! Form::model($resourceData, ['url' => MyHelper::resource('update', ['id' => $resourceData->id]), 'method' => 'patch']) !!}
+                 @else
+                {!! Form::open(['url' => Myhelper::resource('store'), 'method' => 'post']) !!}
 
-                {!! Form::inputGroup('text', 'First Name', 'firstname') !!}
-                {!! Form::inputGroup('text', 'Middle Name', 'middlename') !!}
-                {!! Form::inputGroup('text', 'Last Name', 'lastname') !!}
-                {!! Form::inputGroup('text', 'Address', 'address') !!}
-                {!! Form::selectGroup('Gender', 'gender', ['' => 'Select type', 'Male' => 'Male', 'Female' => 'Female']) !!}
-                {!! Form::inputGroup('date', 'Birth Date', 'birth_date') !!}
-                {!! Form::inputGroup('text', 'Contact Number', 'contact_number') !!}
-                {!! Form::inputGroup('email', 'Email', 'email') !!}
-                {!! Form::inputGroup('hidden', null, 'password')!!}
-                {!! Form::inputGroup('text', 'Quota', 'quota', $resourceData->quota ?? 0.00 , ['class'=> 'price quota', 'id' => 'quota']) !!}
-                {!! Form::inputGroup('hidden', null, 'id' , $resourceData->id)!!}
                 
-                @else
-                    {!! Form::open(['url' => Myhelper::resource('store'), 'method' => 'post']) !!}
-
+                {!! Form::inputGroup('password', 'Password', 'password')!!}
+                <br>
+                <hr>
+                <br>   
+                @endif
+                
+                {!! Form::inputGroup('username', 'Username', 'username')!!}
                 {!! Form::inputGroup('text', 'First Name', 'firstname') !!}
                 {!! Form::inputGroup('text', 'Middle Name', 'middlename') !!}
                 {!! Form::inputGroup('text', 'Last Name', 'lastname') !!}
@@ -34,12 +30,12 @@
                 {!! Form::selectGroup('Gender', 'gender', ['' => 'Select type', 'Male' => 'Male', 'Female' => 'Female']) !!}
                 {!! Form::inputGroup('date', 'Birth Date', 'birth_date') !!}
                 {!! Form::inputGroup('text', 'Contact Number', 'contact_number') !!}
-                {!! Form::selectGroup('Role','role', ['' => 'Select Type', 'Admin' => 'Admin', 'Agent' => 'Agent'], ['class' => 'role'])!!}
                 {!! Form::inputGroup('email', 'Email', 'email') !!}
-                {!! Form::inputGroup('password', 'Password', 'password')!!}
-                {!! Form::inputGroup('text', 'Quota', 'quota', $resourceData->quota ?? 0.00 , ['class'=> 'price']) !!}
-                @endif
-
+                {!! Form::selectGroup('Role','role',['' => 'Select Type', 'Admin' => 'Admin', 'Agent' => 'Agent'], $resourceData->role, ['class' => 'role', 'id' => 'role']) !!}
+                 {!! Form::inputGroup('text', 'Quota', 'quota', $resourceData->quota ?? 0.00 , ['class'=> 'price']) !!}
+                    
+               
+                 {{$resourceData->role}}
                 <hr>
                 <button class="btn btn-sm {{ $resourceData->id ? 'btn-outline-info' : 'btn-outline-success' }}">
                     {{ $resourceData->id ? 'Update' : 'Create' }}

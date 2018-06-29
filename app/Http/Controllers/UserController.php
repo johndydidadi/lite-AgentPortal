@@ -22,12 +22,14 @@ class UserController extends CRUDController
                 'gender' => 'required',
                 'birth_date' => 'required',
                 'contact_number' => 'required|numeric',
-                'email' => 'required|unique:admins,email',
+                'email' => 'required|unique:users,email',
+                'username' => 'required|unique:users,username',
                 'password' => 'required|min:8',
-                'role' => 'required|unique:users,role',
+                'role' => 'required',
                 'quota' => 'nullable'
             ],
             'update' => [
+                'username' => 'nullable',
                 'firstname' => 'required|alpha_spaces',
                 'middlename' => 'nullable',
                 'lastname' => 'required',
@@ -47,26 +49,12 @@ class UserController extends CRUDController
 
     public function beforeStore()
     {
-        $this->validatedInput['password'] = bcrypt($this->validatedInput['password']);
-        // $this->validatedInput['quota'] = str_replace(',' , '', $this->validatedInput['quota']);
-
-        if(request()->role == 'Admin')
-        {
-            $this->validatedInput['quota'] = 0;
-
-        }
-        else if(request()->role == 'Agent')
-         {
-                $this->validatedInput['quota'] = str_replace(',' , '', $this->validatedInput['quota']);
-
-        }
+        $this->validatedInput['quota'] = str_replace(',' , '', $this->validatedInput['quota']);
     }
 
-    //     public function getFullnameAttribute()
-    // {
-    //    // return "{$this->firstname} {$this->middlename[0]} {$this->lastname}";
-
-    //     return ucfirst($this->first_name) . ' ' . ucfirst($this->first_name) . ' ' . ucfirst($this->last_name);
-    // }
+    public function beforeUpdate()
+    {
+        $this->beforeStore();
+    }
      
 }

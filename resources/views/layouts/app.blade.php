@@ -79,6 +79,19 @@
 				$('.subscription').attr('disabled', true);
 			}
 
+			if($('.role').val() == 'Admin'){
+				$('.admin').attr('disabled', false);
+				$('.price').attr('disabled', true);
+			}
+			else if($('.role').val() == 'Agent'){
+				$('.price').attr('disabled', false);
+				$('.admin').attr('disabled', true);
+			}
+			else{
+				$('.price').attr('disabled', true);
+				$('.admin').attr('disabled', true);
+			}
+
 		});
 
 		$('.payment_type').change(function(){
@@ -97,11 +110,17 @@
 
 		$('.role').change(function(){
 			if($(this).val() == 'Admin'){
-				$('#quota').attr('disabled', false);
-			} else {
-				$('#quota').val('0.00');
+				$('.admin').attr('disabled', false);
+				$('.price').attr('disabled', true);
+				$('.price').val('0.00');
+			}
+			else if($(this).val() == 'Agent'){
+				$('.price').attr('disabled', false);
+				$('.admin').attr('disabled', true);
+				$('.admin').val('0.00');
 			}
 		});
+		
 
 	</script>
 	</body>

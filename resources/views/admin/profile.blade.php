@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('header')
-	<h1 class="h2">Agent Profile</h1>
+	<h1 class="h2">Admin Profile</h1>
 @endsection
 
 @section('content')
@@ -13,11 +13,11 @@
                 <form class="form-group">
                     <div class="form-group row">
                         <label class="col-sm-2 col-xs-4"><b>Name</b></label>
-                        <p class="col-sm-4 col-xs-8">{{ Auth::user()->admin->fullname }}</p>
+                        <p class="col-sm-4 col-xs-8">{{ Auth::user()->fullname }}</p>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-2 col-xs-4"><b>Email</b></label>
-                        <p class="col-sm-4 col-xs-8">{{ Auth::user()->admin->email }}</p>
+                        <p class="col-sm-4 col-xs-8">{{ Auth::user()->email }}</p>
                     </div>                    
                 </form>
 

@@ -37,17 +37,6 @@ class User extends Authenticatable
         'fullname'
     ];
 
-    
-
-    // public function admin()
-    // {
-    //     return $this->belongsTo(Admin::class, 'admin_id');
-    // }
-    // public function agent()
-    // {
-    //     return $this->belongsTo(Agent::class, 'agent_id');
-    // }
-    
     public function getFullnameAttribute()
     {
        // return "{$this->firstname} {$this->middlename[0]} {$this->lastname}";
