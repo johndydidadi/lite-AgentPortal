@@ -47,6 +47,17 @@ class UserController extends CRUDController
 
     }
 
+     public function beforeIndex($query)
+    {
+        $search = \Request::get('lastname'); 
+ 
+        $users = User::where('lastname','LIKE','%'.$search.'%')
+        ->orderBy('lastname')
+        ->paginate(20);
+
+    }
+
+
     public function beforeStore()
     {
         $this->validatedInput['quota'] = str_replace(',' , '', $this->validatedInput['quota']);
