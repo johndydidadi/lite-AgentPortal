@@ -3,10 +3,13 @@
 @section('header')
     <h1 class="h2">Client</h1>
     <a class="btn btn-success btn-sm" href="{{ MyHelper::resource('create') }}"><i class="fas fa-plus"></i> New Client</a>
+
+
 @endsection
 
 @section('content')
     <div class="my-3 bg-white rounded box-shadow">
+         @include('search',['url'=>'offices','link'=>'offices'])
         <table class="table table-sm">
             <thead>
             <tr>
