@@ -6,23 +6,20 @@
 @endsection
 
 @section('content')
-@json($errors->all())
+<!-- @json($errors->all()) -->
     <div class="row">
         <div class="col-md-6">
             <div class="my-3 p-3 bg-white rounded box-shadow">
                 @if($resourceData->id)
                     {!! Form::model($resourceData, ['url' => MyHelper::resource('update', ['id' => $resourceData->id]), 'method' => 'patch']) !!}
+                    {!! Form::inputGroup('username', 'Username', 'username')!!}
                  @else
-                {!! Form::open(['url' => Myhelper::resource('store'), 'method' => 'post']) !!}
-
-                
-                {!! Form::inputGroup('password', 'Password', 'password')!!}
-                <br>
-                <hr>
-                <br>   
+                {!! Form::open(['url' => Myhelper::resource('store'), 'method' => 'post']) !!} 
+                    {!! Form::inputGroup('username', 'Username', 'username')!!}
+                    {!! Form::inputGroup('password', 'Password', 'password')!!}
                 @endif
                 
-                {!! Form::inputGroup('username', 'Username', 'username')!!}
+
                 {!! Form::inputGroup('text', 'First Name', 'firstname') !!}
                 {!! Form::inputGroup('text', 'Middle Name', 'middlename') !!}
                 {!! Form::inputGroup('text', 'Last Name', 'lastname') !!}
@@ -33,9 +30,6 @@
                 {!! Form::inputGroup('email', 'Email', 'email') !!}
                 {!! Form::selectGroup('Role','role',['' => 'Select Type', 'Admin' => 'Admin', 'Agent' => 'Agent'], $resourceData->role, ['class' => 'role', 'id' => 'role']) !!}
                  {!! Form::inputGroup('text', 'Quota', 'quota', $resourceData->quota ?? 0.00 , ['class'=> 'price']) !!}
-                    
-               
-                 {{$resourceData->role}}
                 <hr>
                 <button class="btn btn-sm {{ $resourceData->id ? 'btn-outline-info' : 'btn-outline-success' }}">
                     {{ $resourceData->id ? 'Update' : 'Create' }}

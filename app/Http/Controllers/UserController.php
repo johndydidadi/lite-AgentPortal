@@ -24,12 +24,12 @@ class UserController extends CRUDController
                 'contact_number' => 'required|numeric',
                 'email' => 'required|unique:users,email',
                 'username' => 'required|unique:users,username',
-                'password' => 'required|min:8',
+                'password' => 'required|min:6',
                 'role' => 'required',
                 'quota' => 'nullable'
             ],
             'update' => [
-                'username' => 'nullable',
+                'username' => 'nullable|unique:users,username',
                 'firstname' => 'required|alpha_spaces',
                 'middlename' => 'nullable',
                 'lastname' => 'required',
@@ -49,7 +49,17 @@ class UserController extends CRUDController
 
     public function beforeStore()
     {
-        $this->validatedInput['quota'] = str_replace(',' , '', $this->validatedInput['quota']);
+        // $this->validatedInput['quota'] = str_replace(',' , '', $this->validatedInput['quota']);
+
+        if(request()->role == 'Admin')
+        {
+            $this->validatedInput['quota'] = 0;
+
+        }
+        else if(request()->role == 'Agent')
+        {
+            $this->validatedInput['quota'] = str_replace(',' , '', $this->validatedInput['quota']);
+        }
     }
 
     public function beforeUpdate()

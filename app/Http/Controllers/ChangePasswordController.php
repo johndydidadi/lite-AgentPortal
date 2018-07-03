@@ -33,7 +33,7 @@ class ChangePasswordController extends Controller
 
         $request->validate([
                 'old_password' => ['required',new VerifyOldPassword],
-                'new_password' => 'required|min:8|different:old_password',
+                'new_password' => 'required|min:6|different:old_password',
                 'new_password_confirmation' => 'required|same:new_password'
             ],
 
