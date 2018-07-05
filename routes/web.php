@@ -35,8 +35,6 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::resource('services', 'ServiceController');
 	Route::resource('users', 'UserController');
 	Route::get('get-services/{client}', 'ClientServiceController@showServices');
-	Route::get('search', 'SearchController@search');
-	Route::post('search', 'SearchController@search');
 });
 
 

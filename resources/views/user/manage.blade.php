@@ -17,6 +17,15 @@
                 {!! Form::open(['url' => Myhelper::resource('store'), 'method' => 'post']) !!} 
                     {!! Form::inputGroup('username', 'Username', 'username')!!}
                     {!! Form::inputGroup('password', 'Password', 'password')!!}
+                     {!! Form::inputGroup('username', 'Username', 'username')!!}
+                 @else
+                {!! Form::open(['url' => Myhelper::resource('store'), 'method' => 'post']) !!}
+
+                 {!! Form::inputGroup('username', 'Username', 'username')!!}
+                {!! Form::inputGroup('password', 'Password', 'password')!!}
+                <br>
+                <hr>
+                <br>   
                 @endif
                 
                 {!! Form::inputGroup('text', 'First Name', 'firstname') !!}
