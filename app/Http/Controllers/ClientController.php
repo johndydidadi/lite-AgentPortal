@@ -7,6 +7,7 @@ use App\Common\CRUDController;
 use App\Client;
 use App\Service;
 use App\ClientService;
+use DB;
 class ClientController extends CRUDController
 {
     public function __construct(Client $model, Request $request){
@@ -56,21 +57,21 @@ class ClientController extends CRUDController
         $this->beforeCreate();
     }
 
- 
     public function beforeIndex($query)
     {
-        
         $request=request();
 
-        if($request->name){
-            $result = str_replace(' ','',$request->name);
-            $query->where(DB::raw("CONCAT(`firstname`,`middlename`,`lastname`)"),'like',"%{$result}%");
-        }else if($request->email){
+        if($request->company){
+            $query->where(DB::raw("`company`"),'like',"%{$request->company}%");
+        }else if($request->representative){
 
-            $query->where(DB::raw("`email`"),'like',"%{$request->email}%");
-        }else if($request->role){
-            $query->where(DB::raw("`role`"),'like',"%{$request->role}%");
+            $query->where(DB::raw("`representative`"),'like',"%{$request->representative}%");
+        }else if($request->address){
+            $query->where(DB::raw("`address`"),'like',"%{$request->address}%");
+        }else{
+            $query->with('services');
         }
+
 
     }
 }

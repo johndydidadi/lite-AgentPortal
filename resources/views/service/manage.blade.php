@@ -2,7 +2,7 @@
 
 @section('header')
     <h1 class="h2">{{ $resourceData->id ? "Edit: $resourceData->service" : 'New Service' }}</h1>
-    <a class="btn btn-danger btn-sm" href="{{ MyHelper::resource('index') }}"><i class="fas fa-arrow-left "></i> Back to list</a>
+    <a class="btn btn-danger btn-sm" href="{{ MyHelper::resource('create') }}"><i class="fas fa-arrow-left "></i> Back to list</a>
 @endsection
 
 @section('content')
