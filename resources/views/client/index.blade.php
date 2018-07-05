@@ -8,8 +8,21 @@
 @endsection
 
 @section('content')
+{!! Form::open(['method'=>'GET','url'=>url()->current(),'class'=>'navbar-form navbar-left'])  !!}
+
+
+<div class="form-inline">
+    {!! Form::inputGroup('text',null, 'company' ,null , ['class' => 'form-group' , 'placeholder' => 'Company']) !!}
+    {!! Form::inputGroup('text',null, 'representative',null , ['class' => 'form-group' , 'placeholder' => 'Representaticve']) !!}
+    {!! Form::inputGroup('text',null, 'address',null , ['class' => 'form-group' , 'placeholder' => 'Address']) !!}
+    <button class="btn btn-default" type="submit">
+            <i class="fa fa-search"></i>
+    </button>
+   
+</div>
+{!! Form::close() !!}
     <div class="my-3 bg-white rounded box-shadow">
-         @include('search',['url'=>'offices','link'=>'offices'])
+
         <table class="table table-sm">
             <thead>
             <tr>

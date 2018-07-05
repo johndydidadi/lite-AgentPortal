@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Common\CRUDController;
 use Illuminate\Validation\Rule;
 use App\User;
-
+use DB;
 class UserController extends CRUDController
 {
     public function __construct(User $model, Request $request){
@@ -47,20 +47,34 @@ class UserController extends CRUDController
 
     }
 
-     public function beforeIndex($query)
+    public function beforeIndex($query)
     {
-        $search = \Request::get('lastname'); 
- 
-        $users = User::where('lastname','LIKE','%'.$search.'%')
-        ->orderBy('lastname')
-        ->paginate(20);
+        $request=request();
+
+        if($request->name){
+            $result = str_replace(' ','',$request->name);
+            $query->where(DB::raw("CONCAT(`firstname`,`middlename`,`lastname`)"),'like',"%{$result}%");
+        }else if($request->email){
+
+            $query->where(DB::raw("`email`"),'like',"%{$request->email}%");
+        }else if($request->role){
+            $query->where(DB::raw("`role`"),'like',"%{$request->role}%");
+        }
 
     }
 
 
     public function beforeStore()
     {
-        $this->validatedInput['quota'] = str_replace(',' , '', $this->validatedInput['quota']);
+        if(request()->Admin == 'Admin')
+        {
+            $this->validatedInput['quota'] = 0;
+        }
+        else if(request()->Agent == 'Agent')
+        {
+             $this->validatedInput['quota'] = str_replace(',' , '', $this->validatedInput['quota']);
+        }
+       
     }
 
     public function beforeUpdate()

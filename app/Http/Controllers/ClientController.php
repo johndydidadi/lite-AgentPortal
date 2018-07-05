@@ -56,9 +56,21 @@ class ClientController extends CRUDController
         $this->beforeCreate();
     }
 
+ 
     public function beforeIndex($query)
-    {   
-        $query->with('services');
-    }
+    {
+        
+        $request=request();
 
+        if($request->name){
+            $result = str_replace(' ','',$request->name);
+            $query->where(DB::raw("CONCAT(`firstname`,`middlename`,`lastname`)"),'like',"%{$result}%");
+        }else if($request->email){
+
+            $query->where(DB::raw("`email`"),'like',"%{$request->email}%");
+        }else if($request->role){
+            $query->where(DB::raw("`role`"),'like',"%{$request->role}%");
+        }
+
+    }
 }
