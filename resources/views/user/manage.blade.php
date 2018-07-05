@@ -19,7 +19,6 @@
                     {!! Form::inputGroup('password', 'Password', 'password')!!}
                 @endif
                 
-
                 {!! Form::inputGroup('text', 'First Name', 'firstname') !!}
                 {!! Form::inputGroup('text', 'Middle Name', 'middlename') !!}
                 {!! Form::inputGroup('text', 'Last Name', 'lastname') !!}
