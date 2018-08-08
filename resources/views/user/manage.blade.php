@@ -12,22 +12,15 @@
             <div class="my-3 p-3 bg-white rounded box-shadow">
                 @if($resourceData->id)
                     {!! Form::model($resourceData, ['url' => MyHelper::resource('update', ['id' => $resourceData->id]), 'method' => 'patch']) !!}
-                    {!! Form::inputGroup('username', 'Username', 'username')!!}
-                 @else
-                {!! Form::open(['url' => Myhelper::resource('store'), 'method' => 'post']) !!} 
-                    {!! Form::inputGroup('username', 'Username', 'username')!!}
-                    {!! Form::inputGroup('password', 'Password', 'password')!!}
-                     {!! Form::inputGroup('username', 'Username', 'username')!!}
-                 @else
-                {!! Form::open(['url' => Myhelper::resource('store'), 'method' => 'post']) !!}
-
-                 {!! Form::inputGroup('username', 'Username', 'username')!!}
-                {!! Form::inputGroup('password', 'Password', 'password')!!}
+                    {!! Form::inputGroup('text', 'Username', 'username')!!}
+                    
                 <br>
                 <hr>
                 <br>   
                 @endif
-                
+                {!! Form::open(['url' => Myhelper::resource('store'), 'method' => 'post']) !!}
+                {!! Form::inputGroup('text','Username','username')!!}
+                {!! Form::inputGroup('password', 'Password','password')!!}
                 {!! Form::inputGroup('text', 'First Name', 'firstname') !!}
                 {!! Form::inputGroup('text', 'Middle Name', 'middlename') !!}
                 {!! Form::inputGroup('text', 'Last Name', 'lastname') !!}

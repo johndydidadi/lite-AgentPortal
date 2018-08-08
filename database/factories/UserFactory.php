@@ -14,10 +14,35 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(App\User::class, function (Faker $faker) {
+	$arrayValues = ['Admin', 'Agent'];
+    $role = $faker->randomElement($arrayValues);
+    if($role == 'Admin'){
+
+		$security = 'admin'.$faker->unique()->numberBetween($min = 1 , $max = 10);
+
+
+    }else{
+
+    	$security = 'agent'.$faker->unique()->numberBetween($min = 1 , $max = 10);
+   
+    }
+
     return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
-        'remember_token' => str_random(10),
+    		'firstname' => $faker->firstName,
+            'middlename' => $faker->lastName,
+            'lastname' => $faker->lastName,
+            'address' => $faker->address,
+            'gender' => 'Male',
+            'birth_date' => $faker->dateTimeThisCentury->format('Y-m-d'),
+            'contact_number' => $faker->phoneNumber,
+            'email' => $faker->email,
+            'quota' => '1',
+            'username' => $security,
+            'password' => $security,
+            'role' => $role
     ];
+    	
+
+    
+    
 });

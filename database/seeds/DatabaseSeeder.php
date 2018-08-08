@@ -1,8 +1,7 @@
 <?php
-use App\Admin;
-use App\User;
-use Illuminate\Database\Seeder;
 
+use Illuminate\Database\Seeder;
+use App\User;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -12,6 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(UserTableSeeder::class);
         User::create([
             'firstname' => 'admin',
             'middlename' => 'admin',

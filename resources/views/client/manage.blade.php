@@ -93,31 +93,6 @@
     <script>
         $(document).ready(function(){
 
-            // $('.add-line').click(function(){
-            //     var tr = $('.dynamic-table tbody tr:first').clone();
-
-            //     tr.find('select').val('');
-            //     tr.appendTo($('.dynamic-table tbody'));
-
-            //     var count = $('.dynamic-table tbody tr').length;
-                   
-            //         tr.find('select')
-            //             .attr('name', function () {
-            //         return $(this).data('name').replace('idx', count)
-            //         });
-
-            //     $('select').change(function(){
-            //         if ($('select option[value="' + $(this).val() + '"]:selected').length > 1){
-            //             $(this).val(0);
-            //             alert('Service already availed! Please choose another.');
-            //         }
-            //     }
-                    
-
-            //     });
-            
-            // });
-
             $('.add-line').click(function () {
                 var table = $(this).closest('table.dynamic'),
                     clone = table.find('tbody tr:first').clone();
