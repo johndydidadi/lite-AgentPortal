@@ -18,12 +18,12 @@ $factory->define(App\User::class, function (Faker $faker) {
     $role = $faker->randomElement($arrayValues);
     if($role == 'Admin'){
 
-		$security = 'admin'.$faker->unique()->numberBetween($min = 1 , $max = 10);
+		$security = 'admin'.$faker->numberBetween($min = 1 , $max = 10);
 
 
     }else{
 
-    	$security = 'agent'.$faker->unique()->numberBetween($min = 1 , $max = 10);
+    	$security = 'agent'.$faker->numberBetween($min = 1 , $max = 10);
    
     }
 
